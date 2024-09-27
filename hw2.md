@@ -9,10 +9,10 @@ Xun Sun
 
 ``` r
 subway_df = 
-  read_csv("data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv", na = c("NA", "", ".")) |>
+  read_csv("./data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv", na = c("NA", "", ".")) |>
   janitor::clean_names() |> 
   mutate( 
-  entry_logic = ifelse(is.na(entry), FALSE, TRUE),
+  entry_logic = ifelse(entry == "YES", TRUE, ifelse(entry == "NO", FALSE, NA)),
   route_count = 11 - rowSums(is.na(across(starts_with("route"), .names = "route")))) |> 
   select(line, station_name, station_latitude, station_longitude, route_count, entry_logic, vending, entrance_type, ada)
 ```
@@ -39,13 +39,13 @@ summary(subway_df)
     ##                                        Mean   :40.73    Mean   :-73.94   
     ##                                        3rd Qu.:40.77    3rd Qu.:-73.91   
     ##                                        Max.   :40.90    Max.   :-73.76   
-    ##   route_count     entry_logic      vending          entrance_type     
-    ##  Min.   : 1.000   Mode:logical   Length:1868        Length:1868       
-    ##  1st Qu.: 1.000   TRUE:1868      Class :character   Class :character  
-    ##  Median : 2.000                  Mode  :character   Mode  :character  
-    ##  Mean   : 2.286                                                       
-    ##  3rd Qu.: 3.000                                                       
-    ##  Max.   :11.000                                                       
+    ##   route_count     entry_logic       vending          entrance_type     
+    ##  Min.   : 1.000   Mode :logical   Length:1868        Length:1868       
+    ##  1st Qu.: 1.000   FALSE:115       Class :character   Class :character  
+    ##  Median : 2.000   TRUE :1753      Mode  :character   Mode  :character  
+    ##  Mean   : 2.286                                                        
+    ##  3rd Qu.: 3.000                                                        
+    ##  Max.   :11.000                                                        
     ##     ada         
     ##  Mode :logical  
     ##  FALSE:1400     
@@ -83,7 +83,7 @@ treating specific strings as NA values. 2. **Clean Column Names**:
 Standardize column names for consistency. 3. **Calculate Entry Logic**:
 Create a binary indicator for entry presence. 4. **Determine Route
 Count**: Compute the number of non-missing route entries per station. 5.
-**Select Columns**: Keep only the relevant columns for further analysis.
+**Select Columns**: Keep only the relevant columns.
 
 The dimension of the resulting dataset: The resulting data set contains
 9 columns and 1868 rows.
@@ -92,6 +92,45 @@ After the steps above, the data can still be cleaner.
 
 ### 1.2 answer questions
 
-How many distinct stations are there?
+##### 1.2.1 How many distinct stations are there?
+
+``` r
+count(distinct(subway_df, line, station_name))
+```
+
+    ## # A tibble: 1 × 1
+    ##       n
+    ##   <int>
+    ## 1   465
+
+``` r
+unique_subway_df <- distinct(subway_df, line, station_name, .keep_all = TRUE)
+view(unique_subway_df)
+```
+
+##### 1.2.2 How many stations are ADA compliant?
+
+``` r
+count(unique_subway_df, ada == TRUE)
+```
+
+    ## # A tibble: 2 × 2
+    ##   `ada == TRUE`     n
+    ##   <lgl>         <int>
+    ## 1 FALSE           381
+    ## 2 TRUE             84
+
+##### 1.2.3 What proportion of station entrances / exits without vending allow entrance?
+
+``` r
+A = count(subway_df, vending == "NO")
+B = count(subway_df, vending == "NO" & entry_logic == TRUE)
+
+B/A
+```
+
+    ##   vending == "NO" & entry_logic == TRUE         n
+    ## 1                                   NaN 1.0676558
+    ## 2                                     1 0.3770492
 
 \#Problem 2
