@@ -3,9 +3,9 @@ title: "p8105_hw2_xs2569"
 author: "Xun Sun"
 date: "2024-09-26"
 output:
-  github_document: null
   html_document:
     df_print: paged
+  github_document: null
 ---
 
 # 1] problem 1  -  NYC Transit data
@@ -14,6 +14,7 @@ output:
 library(tidyverse)
 library(readxl)
 library(haven)
+library(dplyr)
 ```
 
 ### 1.1 read and clean
@@ -57,9 +58,11 @@ After the steps above, the data can still be cleaner.
 
 ##### 1.2.1 How many distinct stations are there?
 ```{r}
-count(distinct(subway_df, line, station_name))
+n_distinct(data.frame(x = subway_df$line, y = subway_df$station_name))
+
 unique_subway_df <- distinct(subway_df, line, station_name, .keep_all = TRUE)
 view(unique_subway_df)
+
 ```
 
 ##### 1.2.2 How many stations are ADA compliant?
@@ -68,14 +71,73 @@ sum(unique_subway_df$ada == TRUE, na.rm = TRUE)
 ```
 ##### 1.2.3 What proportion of station entrances / exits without vending allow entrance?
 ```{r}
-A = count(subway_df, vending == "NO")
-B = count(subway_df, vending == "NO" & entry_logic == TRUE)
-
-B/A
+A <- sum(subway_df$vending == "NO", na.rm = TRUE)
+B <- sum(subway_df$vending == "NO" & subway_df$entry_logic == TRUE, na.rm = TRUE)
+ B / A
 ```
 
 
 
 # 2] Problem 2  -  Mr. Trash Wheel sheet
 
+##### 2.1 Read and clean the Mr. Trash Wheel sheet
+```{r message = FALSE}
+MrTrash_df = 
+  read_excel("./data/202309_Trash_Wheel_Collection_Data.xlsx", 
+             na = c("NA", "", "."),
+             sheet = "Mr. Trash Wheel",
+             skip = 1) |>
+  janitor::clean_names() |> 
+  filter(!is.na(dumpster)) |>
+  mutate(sports_balls = as.integer(round(sports_balls)),
+         year = as.double(year)) |>
+  mutate(trash_wheel = "Mr. Trash Wheel") |>
+  select(-x15, -x16)  # without this line the data will contain x15,x16 with all na
 
+view(MrTrash_df)
+summary(MrTrash_df)
+```
+
+##### 2.2 Read and clean Professor Trash Wheel and Gwynnda Sheet
+```{r}
+ProfTrash_df = 
+  read_excel("./data/202309_Trash_Wheel_Collection_Data.xlsx", 
+             na = c("NA", "", "."),
+             sheet = "Professor Trash Wheel",
+             skip = 1) |>
+  janitor::clean_names() |> 
+  filter(!is.na(dumpster)) |>
+  mutate(trash_wheel = "Professor Trash Wheel", sports_balls = 0,
+         year = as.double(year))
+
+view(ProfTrash_df)
+```
+
+```{R}
+GwynTrash_df = 
+  read_excel("./data/202309_Trash_Wheel_Collection_Data.xlsx", 
+             na = c("NA", "", "."),
+             sheet = "Gwynnda Trash Wheel",
+             skip = 1) |>
+  janitor::clean_names() |> 
+  filter(!is.na(dumpster)) |>
+  mutate(trash_wheel = "Gwynnda", sports_balls = 0,
+         year = as.double(year))
+
+view(GwynTrash_df)
+```
+
+##### 2.3 Combine
+```{r}
+Combined_df <- bind_rows(MrTrash_df, ProfTrash_df, GwynTrash_df)
+view(Combined_df)
+summary(Combined_df)
+```
+
+##### 2.4 Summary 
+
+This dataset provides a detailed record of waste collection activities by three entities: Mr. Trash Wheel, Professor Trash Wheel, and Gwynnda. It consists of `r nrow(Combined_df)` observations, each capturing a month's worth of waste collection data from as early as 2014 to as recent as 2023. 
+
+Key variables in the dataset include `dumpster`, which identifies the dumpster number; `month` and `year`, which are character strings indicating the time of collection; and `date`, which provides a precise timestamp. The `weight_tons` variable records the weight of the waste collected in tons, while `volume_cubic_yards` indicates the volume in cubic yards. The dataset also tracks the quantity of various waste materials such as `plastic_bottles`, `polystyrene`, `cigarette_butts`, `glass_bottles`, `plastic_bags`, and `wrappers`. Additionally, it records the number of `sports_balls` collected and estimates the number of `homes_powered` by the energy equivalent of the waste.
+
+For example, the minimum and maximum weights of trash collected are `r round(min(Combined_df$weight_tons, na.rm = TRUE), 2)` tons and `r round(max(Combined_df$weight_tons, na.rm = TRUE), 2)` tons, respectively. The median number of `plastic_bottles` collected is `r median(Combined_df$plastic_bottles, na.rm = TRUE)`, and the mean number of `cigarette_butts` is `r mean(Combined_df$cigarette_butts, na.rm = TRUE)`.
