@@ -3,9 +3,9 @@ title: "p8105_hw2_xs2569"
 author: "Xun Sun"
 date: "2024-09-26"
 output:
+  github_document: null
   html_document:
     df_print: paged
-  github_document: null
 ---
 
 # 1] problem 1  -  NYC Transit data
