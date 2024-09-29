@@ -261,23 +261,65 @@ summary(Combined_df)
 
 ##### 2.4 Summary
 
-This dataset provides a detailed record of waste collection activities
-by three entities: Mr. Trash Wheel, Professor Trash Wheel, and Gwynnda.
-It consists of 845 observations, each capturing a month’s worth of waste
-collection data from as early as 2014 to as recent as 2023.
+The dataset documents the waste collection activities by three entities:
+Mr. Trash Wheel, Professor Trash Wheel, and Gwynnda. It consists of a
+total of 845 observations, capturing monthly waste collection data from
+2014 to 2023.
 
-Key variables in the dataset include `dumpster`, which identifies the
-dumpster number; `month` and `year`, which are character strings
-indicating the time of collection; and `date`, which provides a precise
-timestamp. The `weight_tons` variable records the weight of the waste
-collected in tons, while `volume_cubic_yards` indicates the volume in
-cubic yards. The dataset also tracks the quantity of various waste
-materials such as `plastic_bottles`, `polystyrene`, `cigarette_butts`,
-`glass_bottles`, `plastic_bags`, and `wrappers`. Additionally, it
-records the number of `sports_balls` collected and estimates the number
-of `homes_powered` by the energy equivalent of the waste.
+**Key Variables:** - **Dumpster ID** (`dumpster`): Identifies the
+dumpster number, with a minimum of 1 and a maximum of 584. - **Month and
+Year** (`month`, `year`): Character strings indicating the time of
+collection, with the earliest record starting in 2014 and the latest in
+2023. - **Date** (`date`): Provides a precise timestamp of the waste
+collection.
 
-For example, the minimum and maximum weights of trash collected are 0.61
-tons and 5.62 tons, respectively. The median number of `plastic_bottles`
+**Waste Collection Metrics:** - **Weight** (`weight_tons`): Records the
+weight of the waste collected, ranging from 0.610 tons to a maximum of
+5.620 tons, with an average collection weight of approximately 3.009
+tons. - **Volume** (`volume_cubic_yards`): Indicates the volume of waste
+in cubic yards, with values ranging from 5 to 20, and an average volume
+of 15.13 cubic yards.
+
+**Types of Waste Materials:** - **Plastic Bottles** (`plastic_bottles`):
+The minimum collected was 0, with a median of 1980 and an average of
+2296. - **Polystyrene** (`polystyrene`): Collected amounts range from 0
+to 11528, averaging 1631. - **Cigarette Butts** (`cigarette_butts`): The
+minimum collected was 0, with a median of 5500 and an average of
+15592. - **Glass Bottles** (`glass_bottles`): Collected amounts range
+from 0 to 110, averaging 20.89. - **Plastic Bags** (`plastic_bags`): The
+minimum collected was 0, with a median of 1380 and an average of 2330. -
+**Wrappers** (`wrappers`): Collected amounts range from 180 to 20100,
+averaging 9.102.
+
+**Additional Information:** - **Sports Balls** (`sports_balls`): The
+minimum collected was 0, with a median of 6 and an average of 9.102. -
+**Homes Powered** (`homes_powered`): Estimates the number of homes that
+could be powered by the energy equivalent of the waste collected, with a
+median of 49.50 and an average of 45.87.
+
+The minimum and maximum weights of trash collected are 0.61 tons and
+5.62 tons, respectively. The median number of `plastic_bottles`
 collected is 1980, and the mean number of `cigarette_butts` is
 1.5592427^{4}.
+
+    ##   Min_Weight Max_Weight Median_Plastic_Bottles Mean_Cigarette_Buts
+    ## 1       0.61       5.62                   1980            15592.43
+
+The total weight of trash collected by Professor Trash Wheel can be
+calculated as follows:
+
+``` r
+sum(ProfTrash_df$weight_tons)
+```
+
+    ## [1] 216.26
+
+The total number of cigarette_butts collected by Gwynnda in June 2022
+can be calculated by first filtering the data for the specified
+conditions and then summing up the cigarette_butts:
+
+``` r
+sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$year == "2022"])
+```
+
+    ## [1] 18120
