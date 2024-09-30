@@ -194,5 +194,5 @@ The total number of cigarette_butts collected by Gwynnda in June 2022 can be cal
 ```{r}
 sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$year == "2022"])
 ```
-
+# 3] Problem 3  -  Mr. Trash Wheel sheet
 
