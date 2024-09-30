@@ -194,5 +194,139 @@ The total number of cigarette_butts collected by Gwynnda in June 2022 can be cal
 ```{r}
 sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$year == "2022"])
 ```
-# 3] Problem 3  -  Mr. Trash Wheel sheet
+# 3] Problem 3  -  Great British Bake Off
+
+##### 3.1 Read and clean the data
+
+```{r}
+bakers_df = 
+  read.csv("./data/bakers.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() |>
+  mutate(baker = word(baker_name, 1))
+view(bakers_df)
+
+bakes_df = 
+  read.csv("./data/bakes.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() 
+view(bakes_df)
+
+results_df = 
+  read.csv("./data/results.csv", 
+             na = c("NA", "", "."),
+             skip = 2) |>
+  janitor::clean_names() 
+view(results_df)
+```
+
+##### 3.2  Check for completeness 
+```{r,warning=FALSE}
+
+anti_join(bakes_df, bakers_df, by = "baker")
+
+
+anti_join(bakers_df, bakes_df, by = "baker")
+
+
+anti_join(results_df, bakers_df, by = "baker")
+
+
+anti_join(bakers_df, results_df, by = "baker")
+
+
+anti_join(bakes_df, results_df, by = c("baker","series"))
+
+
+anti_join(results_df, bakes_df, by = c("baker","series"))
+```
+
+##### 3.3  join 
+```{r}
+
+# join bakes and bakers
+bakes_bakers = full_join(bakers_df, bakes_df,by = c("series","baker"))
+# join bake_bakers with result
+final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "episode"))
+view(final_dataset)
+```
+
+##### 3.4 rearrange and export
+```{r}
+final_df = final_dataset |>
+  select(series, episode, baker_name, baker, result, everything()) |>
+  arrange(series,episode,baker_name)
+view(final_df)
+
+
+write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
+```
+
+##### 3.5# 3] Problem 3  -  Great British Bake Off
+
+##### 3.1 Read and clean the data
+
+```{r}
+bakers_df = 
+  read.csv("./data/bakers.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() |>
+  mutate(baker = word(baker_name, 1))
+view(bakers_df)
+
+bakes_df = 
+  read.csv("./data/bakes.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() 
+view(bakes_df)
+
+results_df = 
+  read.csv("./data/results.csv", 
+             na = c("NA", "", "."),
+             skip = 2) |>
+  janitor::clean_names() 
+view(results_df)
+```
+
+##### 3.2  Check for completeness 
+```{r,warning=FALSE}
+
+anti_join(bakes_df, bakers_df, by = "baker")
+
+
+anti_join(bakers_df, bakes_df, by = "baker")
+
+
+anti_join(results_df, bakers_df, by = "baker")
+
+
+anti_join(bakers_df, results_df, by = "baker")
+
+
+anti_join(bakes_df, results_df, by = c("baker","series"))
+
+
+anti_join(results_df, bakes_df, by = c("baker","series"))
+```
+
+##### 3.2  join 
+```{r}
+
+# join bakes and bakers
+bakes_bakers = full_join(bakers_df, bakes_df,by = c("series","baker"))
+# join bake_bakers with result
+final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "episode"))
+view(final_dataset)
+```
+
+##### 3.3 rearrange and export
+```{r}
+final_df = final_dataset |>
+  select(series, episode, baker_name, baker, result, everything()) |>
+  arrange(series,episode,baker_name)
+view(final_df)
+
+
+write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
+```
 
