@@ -309,7 +309,7 @@ anti_join(bakes_df, results_df, by = c("baker","series"))
 anti_join(results_df, bakes_df, by = c("baker","series"))
 ```
 
-##### 3.2  join 
+##### 3.3  join 
 ```{r}
 
 # join bakes and bakers
@@ -319,14 +319,36 @@ final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "e
 view(final_dataset)
 ```
 
-##### 3.3 rearrange and export
+##### 3.4 rearrange and export
 ```{r}
 final_df = final_dataset |>
   select(series, episode, baker_name, baker, result, everything()) |>
   arrange(series,episode,baker_name)
 view(final_df)
 
-
 write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
 ```
 
+##### 3.5 Describe your data cleaning process
+###### including any questions you have or choices you made. Briefly discuss the final dataset.
+
+###### 1. Data Import and Initial Cleanup
+- Imported data from `bakers.csv`, `bakes.csv`, and `results.csv`.
+- Handled missing values using the `na` parameter.
+- Standardized column names with `janitor::clean_names()`.
+- Extracted the first word of `baker_name` as a new `baker` column for the `bakers` dataset.
+
+###### 2. Checking for Data Completeness
+- Used `anti_join` to identify bakers without corresponding entries in the bakes and results datasets.
+- Ensured all bakers, bakes, and results were properly aligned.
+
+###### 3. Data Integration
+- Merged `bakers` and `bakes` datasets using a `full_join` based on `baker` and `series`.
+- Further merged the combined dataset with `results` on `baker`, `series`, and `episode`.
+
+###### 4. Final Arrangement and Export
+- Rearranged columns in the final dataset for logical ordering.
+- Exported the cleaned and merged dataset to `final_bake_data.csv` for further analysis.
+
+##### 3.6 Create a reader-friendly table
+ showing the star baker or winner of each episode in Seasons 5 through 10. Comment on this table – were there any predictable overall winners? Any surprises?
