@@ -129,7 +129,7 @@ B <- sum(subway_df$vending == "NO" & subway_df$entry_logic == TRUE, na.rm = TRUE
 
 ``` r
 MrTrash_df = 
-  read_excel("./data/202309_Trash_Wheel_Collection_Data.xlsx", 
+  read_excel("./data/202409 Trash Wheel Collection Data.xlsx", 
              na = c("NA", "", "."),
              sheet = "Mr. Trash Wheel",
              skip = 1) |>
@@ -145,37 +145,42 @@ summary(MrTrash_df)
 ```
 
     ##     dumpster        month                year     
-    ##  Min.   :  1.0   Length:584         Min.   :2014  
-    ##  1st Qu.:146.8   Class :character   1st Qu.:2016  
-    ##  Median :292.5   Mode  :character   Median :2018  
-    ##  Mean   :292.5                      Mean   :2018  
-    ##  3rd Qu.:438.2                      3rd Qu.:2020  
-    ##  Max.   :584.0                      Max.   :2023  
+    ##  Min.   :  1.0   Length:651         Min.   :2014  
+    ##  1st Qu.:163.5   Class :character   1st Qu.:2016  
+    ##  Median :326.0   Mode  :character   Median :2019  
+    ##  Mean   :326.0                      Mean   :2019  
+    ##  3rd Qu.:488.5                      3rd Qu.:2021  
+    ##  Max.   :651.0                      Max.   :2024  
+    ##                                                   
     ##       date                         weight_tons    volume_cubic_yards
-    ##  Min.   :1900-01-20 00:00:00.00   Min.   :0.780   Min.   : 7.0      
-    ##  1st Qu.:2016-07-28 18:00:00.00   1st Qu.:2.720   1st Qu.:15.0      
-    ##  Median :2018-09-01 00:00:00.00   Median :3.195   Median :15.0      
-    ##  Mean   :2018-07-23 03:36:59.18   Mean   :3.211   Mean   :15.3      
-    ##  3rd Qu.:2020-11-17 12:00:00.00   3rd Qu.:3.730   3rd Qu.:15.0      
-    ##  Max.   :2023-06-29 00:00:00.00   Max.   :5.620   Max.   :20.0      
+    ##  Min.   :2014-05-16 00:00:00.00   Min.   :0.780   Min.   : 7.00     
+    ##  1st Qu.:2016-12-03 12:00:00.00   1st Qu.:2.720   1st Qu.:15.00     
+    ##  Median :2019-04-18 00:00:00.00   Median :3.200   Median :15.00     
+    ##  Mean   :2019-04-16 09:39:32.34   Mean   :3.212   Mean   :15.24     
+    ##  3rd Qu.:2021-09-02 00:00:00.00   3rd Qu.:3.725   3rd Qu.:15.00     
+    ##  Max.   :2024-06-11 00:00:00.00   Max.   :5.620   Max.   :20.00     
+    ##                                                                     
     ##  plastic_bottles  polystyrene   cigarette_butts  glass_bottles   
-    ##  Min.   : 210    Min.   :  48   Min.   :   900   Min.   :  0.00  
-    ##  1st Qu.:1000    1st Qu.: 555   1st Qu.:  3900   1st Qu.: 10.00  
-    ##  Median :1900    Median :1160   Median :  6500   Median : 18.00  
-    ##  Mean   :1979    Mean   :1558   Mean   : 19833   Mean   : 21.62  
-    ##  3rd Qu.:2780    3rd Qu.:2400   3rd Qu.: 24000   3rd Qu.: 30.00  
+    ##  Min.   :  80    Min.   :  20   Min.   :   500   Min.   :  0.00  
+    ##  1st Qu.:1008    1st Qu.: 400   1st Qu.:  3600   1st Qu.: 10.00  
+    ##  Median :1900    Median : 990   Median :  5600   Median : 18.00  
+    ##  Mean   :1966    Mean   :1425   Mean   : 18136   Mean   : 21.37  
+    ##  3rd Qu.:2735    3rd Qu.:2240   3rd Qu.: 21500   3rd Qu.: 29.00  
     ##  Max.   :5960    Max.   :6540   Max.   :310000   Max.   :110.00  
+    ##                                                                  
     ##   plastic_bags       wrappers     sports_balls   homes_powered  
     ##  Min.   :  24.0   Min.   : 180   Min.   : 0.00   Min.   : 0.00  
-    ##  1st Qu.: 290.0   1st Qu.: 750   1st Qu.: 6.00   1st Qu.:40.62  
-    ##  Median : 635.0   Median :1100   Median :11.00   Median :51.50  
-    ##  Mean   : 916.8   Mean   :1416   Mean   :13.17   Mean   :47.28  
-    ##  3rd Qu.:1242.0   3rd Qu.:1980   3rd Qu.:18.25   3rd Qu.:60.33  
+    ##  1st Qu.: 265.0   1st Qu.: 780   1st Qu.: 6.00   1st Qu.:41.00  
+    ##  Median : 510.0   Median :1200   Median :12.00   Median :51.67  
+    ##  Mean   : 849.1   Mean   :1452   Mean   :13.98   Mean   :47.73  
+    ##  3rd Qu.:1120.0   3rd Qu.:2000   3rd Qu.:20.00   3rd Qu.:60.33  
     ##  Max.   :3750.0   Max.   :5085   Max.   :56.00   Max.   :93.67  
+    ##                                                  NA's   :22     
     ##  trash_wheel       
-    ##  Length:584        
+    ##  Length:651        
     ##  Class :character  
     ##  Mode  :character  
+    ##                    
     ##                    
     ##                    
     ## 
@@ -218,40 +223,40 @@ view(Combined_df)
 summary(Combined_df)
 ```
 
-    ##     dumpster      month                year     
-    ##  Min.   :  1   Length:845         Min.   :2014  
-    ##  1st Qu.: 71   Class :character   1st Qu.:2017  
-    ##  Median :162   Mode  :character   Median :2019  
-    ##  Mean   :223                      Mean   :2019  
-    ##  3rd Qu.:373                      3rd Qu.:2021  
-    ##  Max.   :584                      Max.   :2023  
-    ##                                                 
+    ##     dumpster        month                year     
+    ##  Min.   :  1.0   Length:912         Min.   :2014  
+    ##  1st Qu.: 76.0   Class :character   1st Qu.:2017  
+    ##  Median :195.5   Mode  :character   Median :2020  
+    ##  Mean   :252.0                      Mean   :2019  
+    ##  3rd Qu.:423.2                      3rd Qu.:2022  
+    ##  Max.   :651.0                      Max.   :2024  
+    ##                                                   
     ##       date                         weight_tons    volume_cubic_yards
-    ##  Min.   :1900-01-20 00:00:00.00   Min.   :0.610   Min.   : 5.00     
-    ##  1st Qu.:2017-06-21 00:00:00.00   1st Qu.:2.490   1st Qu.:15.00     
-    ##  Median :2019-10-25 00:00:00.00   Median :3.070   Median :15.00     
-    ##  Mean   :2019-06-08 04:53:06.75   Mean   :3.009   Mean   :15.13     
-    ##  3rd Qu.:2021-11-04 00:00:00.00   3rd Qu.:3.540   3rd Qu.:15.00     
-    ##  Max.   :2023-06-30 00:00:00.00   Max.   :5.620   Max.   :20.00     
+    ##  Min.   :2014-05-16 00:00:00.00   Min.   :0.610   Min.   : 5.0      
+    ##  1st Qu.:2017-08-19 00:00:00.00   1st Qu.:2.500   1st Qu.:15.0      
+    ##  Median :2020-04-14 00:00:00.00   Median :3.075   Median :15.0      
+    ##  Mean   :2019-11-22 11:01:34.74   Mean   :3.025   Mean   :15.1      
+    ##  3rd Qu.:2022-05-10 00:00:00.00   3rd Qu.:3.560   3rd Qu.:15.0      
+    ##  Max.   :2024-06-11 00:00:00.00   Max.   :5.620   Max.   :20.0      
     ##                                                                     
     ##  plastic_bottles  polystyrene    cigarette_butts  glass_bottles   
     ##  Min.   :   0    Min.   :    0   Min.   :     0   Min.   :  0.00  
-    ##  1st Qu.:1000    1st Qu.:  280   1st Qu.:  3200   1st Qu.: 10.00  
-    ##  Median :1980    Median :  950   Median :  5500   Median : 18.00  
-    ##  Mean   :2296    Mean   : 1631   Mean   : 15592   Mean   : 20.89  
-    ##  3rd Qu.:2900    3rd Qu.: 2400   3rd Qu.: 16000   3rd Qu.: 28.00  
+    ##  1st Qu.:1000    1st Qu.:  240   1st Qu.:  3150   1st Qu.: 10.00  
+    ##  Median :1950    Median :  860   Median :  5000   Median : 18.00  
+    ##  Mean   :2264    Mean   : 1530   Mean   : 14692   Mean   : 20.74  
+    ##  3rd Qu.:2900    3rd Qu.: 2240   3rd Qu.: 14000   3rd Qu.: 28.00  
     ##  Max.   :9830    Max.   :11528   Max.   :310000   Max.   :110.00  
     ##  NA's   :1       NA's   :1       NA's   :1        NA's   :156     
     ##   plastic_bags      wrappers      sports_balls    homes_powered  
     ##  Min.   :    0   Min.   :  180   Min.   : 0.000   Min.   : 0.00  
-    ##  1st Qu.:  280   1st Qu.:  840   1st Qu.: 0.000   1st Qu.:37.83  
-    ##  Median :  680   Median : 1380   Median : 6.000   Median :49.50  
-    ##  Mean   : 1082   Mean   : 2330   Mean   : 9.102   Mean   :45.87  
-    ##  3rd Qu.: 1400   3rd Qu.: 2635   3rd Qu.:14.000   3rd Qu.:57.50  
+    ##  1st Qu.:  270   1st Qu.:  880   1st Qu.: 0.000   1st Qu.:38.50  
+    ##  Median :  584   Median : 1400   Median : 7.000   Median :49.83  
+    ##  Mean   : 1021   Mean   : 2282   Mean   : 9.976   Mean   :46.26  
+    ##  3rd Qu.: 1240   3rd Qu.: 2580   3rd Qu.:16.000   3rd Qu.:58.17  
     ##  Max.   :13450   Max.   :20100   Max.   :56.000   Max.   :93.67  
-    ##  NA's   :1       NA's   :118                      NA's   :2      
+    ##  NA's   :1       NA's   :118                      NA's   :24     
     ##  trash_wheel       
-    ##  Length:845        
+    ##  Length:912        
     ##  Class :character  
     ##  Mode  :character  
     ##                    
@@ -263,7 +268,7 @@ summary(Combined_df)
 
 The dataset documents the waste collection activities by three entities:
 Mr. Trash Wheel, Professor Trash Wheel, and Gwynnda. It consists of a
-total of 845 observations, capturing monthly waste collection data from
+total of 912 observations, capturing monthly waste collection data from
 2014 to 2023.
 
 **Key Variables:** - **Dumpster ID** (`dumpster`): Identifies the
@@ -299,11 +304,11 @@ median of 49.50 and an average of 45.87.
 
 The minimum and maximum weights of trash collected are 0.61 tons and
 5.62 tons, respectively. The median number of `plastic_bottles`
-collected is 1980, and the mean number of `cigarette_butts` is
-1.5592427^{4}.
+collected is 1950, and the mean number of `cigarette_butts` is
+1.4692083^{4}.
 
     ##   Min_Weight Max_Weight Median_Plastic_Bottles Mean_Cigarette_Buts
-    ## 1       0.61       5.62                   1980            15592.43
+    ## 1       0.61       5.62                   1950            14692.08
 
 The total weight of trash collected by Professor Trash Wheel can be
 calculated as follows:
@@ -323,3 +328,1303 @@ sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$yea
 ```
 
     ## [1] 18120
+
+# 3\] Problem 3 - Great British Bake Off
+
+##### 3.1 Read and clean the data
+
+``` r
+bakers_df = 
+  read.csv("./data/bakers.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() |>
+  mutate(baker = word(baker_name, 1))
+view(bakers_df)
+
+bakes_df = 
+  read.csv("./data/bakes.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() 
+view(bakes_df)
+
+results_df = 
+  read.csv("./data/results.csv", 
+             na = c("NA", "", "."),
+             skip = 2) |>
+  janitor::clean_names() 
+view(results_df)
+```
+
+##### 3.2 Check for completeness
+
+``` r
+anti_join(bakes_df, bakers_df, by = "baker")
+```
+
+    ##   series episode baker
+    ## 1      2       1  "Jo"
+    ## 2      2       2  "Jo"
+    ## 3      2       3  "Jo"
+    ## 4      2       4  "Jo"
+    ## 5      2       5  "Jo"
+    ## 6      2       6  "Jo"
+    ## 7      2       7  "Jo"
+    ## 8      2       8  "Jo"
+    ##                                                signature_bake
+    ## 1       Chocolate Orange CupcakesOrange and Cardamom Cupcakes
+    ## 2                 Caramelised Onion, Gruyere and Thyme Quiche
+    ## 3 Stromboli flavored with Mozzarella, Ham, and Picante Pepper
+    ## 4                                           Lavender Biscuits
+    ## 5                                    Salmon and Asparagus Pie
+    ## 6                             Rum and Raisin Baked Cheesecake
+    ## 7                          Raspberry & Strawberry Mousse Cake
+    ## 8                       Raspberry and Blueberry Mille Feuille
+    ##                                                                                                          show_stopper
+    ## 1                                                                                       Chocolate and Strawberry Cake
+    ## 2                   Raspberry and Mascarpone Tarts with Lemon and Almond PastryHoney and Almond Tarts with Sweetcrust
+    ## 3                                                                                                             Unknown
+    ## 4                                                               Blueberry MacaronsCoconut MacaronsStrawberry Macarons
+    ## 5                                                                                    Apple and Raspberry Meringue Pie
+    ## 6                                                                        Limoncello and White Chocolate Croquembouche
+    ## 7                                                           Pain Aux RaisinChocolate TwistsBanana and Raisin Pastries
+    ## 8 Mini Victoria SandwichesRaspberry, White Chocolate and Pistachio Mini MeringuesMini Banoffee Pie with Banana Mousse
+
+``` r
+anti_join(bakers_df, bakes_df, by = "baker")
+```
+
+    ##                 baker_name series baker_age                  baker_occupation
+    ## 1           Alice Fevronia     10        28                 Geography teacher
+    ## 2           Amelia LeBruin     10        24                  Fashion designer
+    ## 3         Antony Amourdoux      9        30                            Banker
+    ## 4          Briony Williams      9        33                  Full-time parent
+    ## 5      Dan Beasley-Harling      9        36                  Full-time parent
+    ## 6             Dan Chambers     10        32                    Support worker
+    ## 7            Helena Garcia     10        40            Online project manager
+    ## 8               Henry Bird     10        20                           Student
+    ## 9          Imelda McCarron      9        33    Countryside recreation officer
+    ## 10              Jamie Finn     10        20                  Part-time waiter
+    ## 11             Jo Wheatley      2        41                         Housewife
+    ## 12             Jon Jenkins      9        47                     Blood courier
+    ## 13            Karen Wright      9        60       In-store sampling assistant
+    ## 14         Kim-Joy Hewlett      9        27          Mental health specialist
+    ## 15           Luke Thompson      9        30 Civil servant/house and techno DJ
+    ## 16           Manon Lagrave      9        26          Software project manager
+    ## 17    Michelle Evans-Fecci     10        35          Print shop administrator
+    ## 18             Phil Thorne     10        56                        HGV driver
+    ## 19            Priya O'Shea     10        34              Marketing consultant
+    ## 20            Rahul Mandal      9        30                Research scientist
+    ## 21 Rosie Brandreth-Poynter     10        28                Veterinary surgeon
+    ## 22         Steph Blackwell     10        28                    Shop assistant
+    ## 23           Terry Hartill      9        56               Retired air steward
+    ##         hometown    baker
+    ## 1          Essex    Alice
+    ## 2        Halifax   Amelia
+    ## 3         London   Antony
+    ## 4        Bristol   Briony
+    ## 5         London      Dan
+    ## 6      Rotherham      Dan
+    ## 7          Leeds   Helena
+    ## 8         Durham    Henry
+    ## 9  County Tyrone   Imelda
+    ## 10        Surrey    Jamie
+    ## 11  Ongar, Essex       Jo
+    ## 12       Newport      Jon
+    ## 13     Wakefield    Karen
+    ## 14         Leeds  Kim-Joy
+    ## 15     Sheffield     Luke
+    ## 16        London    Manon
+    ## 17  Tenby, Wales Michelle
+    ## 18       Rainham     Phil
+    ## 19     Leicester    Priya
+    ## 20     Rotherham    Rahul
+    ## 21      Somerset    Rosie
+    ## 22       Chester    Steph
+    ## 23 West Midlands    Terry
+
+``` r
+anti_join(results_df, bakers_df, by = "baker")
+```
+
+    ##   series episode  baker technical     result
+    ## 1      2       1 Joanne        11         IN
+    ## 2      2       2 Joanne        10         IN
+    ## 3      2       3 Joanne         1         IN
+    ## 4      2       4 Joanne         8         IN
+    ## 5      2       5 Joanne         6         IN
+    ## 6      2       6 Joanne         1 STAR BAKER
+    ## 7      2       7 Joanne         3         IN
+    ## 8      2       8 Joanne         1     WINNER
+
+``` r
+anti_join(bakers_df, results_df, by = "baker")
+```
+
+    ##    baker_name series baker_age baker_occupation     hometown baker
+    ## 1 Jo Wheatley      2        41        Housewife Ongar, Essex    Jo
+
+``` r
+anti_join(bakes_df, results_df, by = c("baker","series"))
+```
+
+    ##   series episode baker
+    ## 1      2       1  "Jo"
+    ## 2      2       2  "Jo"
+    ## 3      2       3  "Jo"
+    ## 4      2       4  "Jo"
+    ## 5      2       5  "Jo"
+    ## 6      2       6  "Jo"
+    ## 7      2       7  "Jo"
+    ## 8      2       8  "Jo"
+    ##                                                signature_bake
+    ## 1       Chocolate Orange CupcakesOrange and Cardamom Cupcakes
+    ## 2                 Caramelised Onion, Gruyere and Thyme Quiche
+    ## 3 Stromboli flavored with Mozzarella, Ham, and Picante Pepper
+    ## 4                                           Lavender Biscuits
+    ## 5                                    Salmon and Asparagus Pie
+    ## 6                             Rum and Raisin Baked Cheesecake
+    ## 7                          Raspberry & Strawberry Mousse Cake
+    ## 8                       Raspberry and Blueberry Mille Feuille
+    ##                                                                                                          show_stopper
+    ## 1                                                                                       Chocolate and Strawberry Cake
+    ## 2                   Raspberry and Mascarpone Tarts with Lemon and Almond PastryHoney and Almond Tarts with Sweetcrust
+    ## 3                                                                                                             Unknown
+    ## 4                                                               Blueberry MacaronsCoconut MacaronsStrawberry Macarons
+    ## 5                                                                                    Apple and Raspberry Meringue Pie
+    ## 6                                                                        Limoncello and White Chocolate Croquembouche
+    ## 7                                                           Pain Aux RaisinChocolate TwistsBanana and Raisin Pastries
+    ## 8 Mini Victoria SandwichesRaspberry, White Chocolate and Pistachio Mini MeringuesMini Banoffee Pie with Banana Mousse
+
+``` r
+anti_join(results_df, bakes_df, by = c("baker","series"))
+```
+
+    ##     series episode    baker technical     result
+    ## 1        2       1   Joanne        11         IN
+    ## 2        2       2   Joanne        10         IN
+    ## 3        2       3   Joanne         1         IN
+    ## 4        2       4   Joanne         8         IN
+    ## 5        2       5   Joanne         6         IN
+    ## 6        2       6   Joanne         1 STAR BAKER
+    ## 7        2       7   Joanne         3         IN
+    ## 8        2       8   Joanne         1     WINNER
+    ## 9        9       1   Antony        12         IN
+    ## 10       9       1   Briony         2         IN
+    ## 11       9       1      Dan         4         IN
+    ## 12       9       1      Jon         5         IN
+    ## 13       9       1    Karen         6         IN
+    ## 14       9       1  Kim-Joy        10         IN
+    ## 15       9       1     Luke         8         IN
+    ## 16       9       1    Rahul         7         IN
+    ## 17       9       1     Ruby         1         IN
+    ## 18       9       1    Terry         9         IN
+    ## 19       9       1   Imelda        11        OUT
+    ## 20       9       1    Manon         3 STAR BAKER
+    ## 21       9       2   Antony         9         IN
+    ## 22       9       2   Briony         5         IN
+    ## 23       9       2      Dan         3         IN
+    ## 24       9       2      Jon         1         IN
+    ## 25       9       2    Karen        11         IN
+    ## 26       9       2  Kim-Joy         4         IN
+    ## 27       9       2    Manon         6         IN
+    ## 28       9       2     Ruby        10         IN
+    ## 29       9       2    Terry         8         IN
+    ## 30       9       2     Luke         7        OUT
+    ## 31       9       2    Rahul         2 STAR BAKER
+    ## 32       9       2   Imelda        NA       <NA>
+    ## 33       9       3   Briony         9         IN
+    ## 34       9       3      Dan         6         IN
+    ## 35       9       3      Jon         2         IN
+    ## 36       9       3    Karen         5         IN
+    ## 37       9       3  Kim-Joy        10         IN
+    ## 38       9       3    Manon         3         IN
+    ## 39       9       3     Ruby         7         IN
+    ## 40       9       3    Terry         1         IN
+    ## 41       9       3   Antony         8        OUT
+    ## 42       9       3    Rahul         4 STAR BAKER
+    ## 43       9       3   Imelda        NA       <NA>
+    ## 44       9       3     Luke        NA       <NA>
+    ## 45       9       4    Terry        NA        [a]
+    ## 46       9       4   Briony         5         IN
+    ## 47       9       4      Jon         3         IN
+    ## 48       9       4    Karen         7         IN
+    ## 49       9       4  Kim-Joy         6         IN
+    ## 50       9       4    Manon         8         IN
+    ## 51       9       4    Rahul         4         IN
+    ## 52       9       4     Ruby         2         IN
+    ## 53       9       4      Dan         1 STAR BAKER
+    ## 54       9       4   Antony        NA       <NA>
+    ## 55       9       4   Imelda        NA       <NA>
+    ## 56       9       4     Luke        NA       <NA>
+    ## 57       9       5   Briony         6         IN
+    ## 58       9       5      Dan         2         IN
+    ## 59       9       5      Jon         7         IN
+    ## 60       9       5    Manon         5         IN
+    ## 61       9       5    Rahul         3         IN
+    ## 62       9       5     Ruby         1         IN
+    ## 63       9       5    Karen         9        OUT
+    ## 64       9       5    Terry         8        OUT
+    ## 65       9       5  Kim-Joy         4 STAR BAKER
+    ## 66       9       5   Antony        NA       <NA>
+    ## 67       9       5   Imelda        NA       <NA>
+    ## 68       9       5     Luke        NA       <NA>
+    ## 69       9       6      Jon         2         IN
+    ## 70       9       6  Kim-Joy         5         IN
+    ## 71       9       6    Manon         4         IN
+    ## 72       9       6    Rahul         3         IN
+    ## 73       9       6     Ruby         7         IN
+    ## 74       9       6      Dan         6        OUT
+    ## 75       9       6   Briony         1 STAR BAKER
+    ## 76       9       6   Antony        NA       <NA>
+    ## 77       9       6   Imelda        NA       <NA>
+    ## 78       9       6    Karen        NA       <NA>
+    ## 79       9       6     Luke        NA       <NA>
+    ## 80       9       6    Terry        NA       <NA>
+    ## 81       9       7   Briony         5         IN
+    ## 82       9       7    Manon         2         IN
+    ## 83       9       7    Rahul         1         IN
+    ## 84       9       7     Ruby         3         IN
+    ## 85       9       7      Jon         4        OUT
+    ## 86       9       7  Kim-Joy         6 STAR BAKER
+    ## 87       9       7   Antony        NA       <NA>
+    ## 88       9       7      Dan        NA       <NA>
+    ## 89       9       7   Imelda        NA       <NA>
+    ## 90       9       7    Karen        NA       <NA>
+    ## 91       9       7     Luke        NA       <NA>
+    ## 92       9       7    Terry        NA       <NA>
+    ## 93       9       8   Briony         1         IN
+    ## 94       9       8  Kim-Joy         2         IN
+    ## 95       9       8    Rahul         5         IN
+    ## 96       9       8    Manon         4        OUT
+    ## 97       9       8     Ruby         3 STAR BAKER
+    ## 98       9       8   Antony        NA       <NA>
+    ## 99       9       8      Dan        NA       <NA>
+    ## 100      9       8   Imelda        NA       <NA>
+    ## 101      9       8      Jon        NA       <NA>
+    ## 102      9       8    Karen        NA       <NA>
+    ## 103      9       8     Luke        NA       <NA>
+    ## 104      9       8    Terry        NA       <NA>
+    ## 105      9       9  Kim-Joy         2         IN
+    ## 106      9       9    Rahul         4         IN
+    ## 107      9       9   Briony         3        OUT
+    ## 108      9       9     Ruby         1 STAR BAKER
+    ## 109      9       9   Antony        NA       <NA>
+    ## 110      9       9      Dan        NA       <NA>
+    ## 111      9       9   Imelda        NA       <NA>
+    ## 112      9       9      Jon        NA       <NA>
+    ## 113      9       9    Karen        NA       <NA>
+    ## 114      9       9     Luke        NA       <NA>
+    ## 115      9       9    Manon        NA       <NA>
+    ## 116      9       9    Terry        NA       <NA>
+    ## 117      9      10  Kim-Joy         1  Runner-up
+    ## 118      9      10     Ruby         3  Runner-up
+    ## 119      9      10    Rahul         2     WINNER
+    ## 120      9      10   Antony        NA       <NA>
+    ## 121      9      10   Briony        NA       <NA>
+    ## 122      9      10      Dan        NA       <NA>
+    ## 123      9      10   Imelda        NA       <NA>
+    ## 124      9      10      Jon        NA       <NA>
+    ## 125      9      10    Karen        NA       <NA>
+    ## 126      9      10     Luke        NA       <NA>
+    ## 127      9      10    Manon        NA       <NA>
+    ## 128      9      10    Terry        NA       <NA>
+    ## 129     10       1    Alice         5         IN
+    ## 130     10       1   Amelia         4         IN
+    ## 131     10       1    David        10         IN
+    ## 132     10       1   Helena        12         IN
+    ## 133     10       1    Henry         1         IN
+    ## 134     10       1    Jamie        13         IN
+    ## 135     10       1  Michael        11         IN
+    ## 136     10       1     Phil         8         IN
+    ## 137     10       1    Priya         7         IN
+    ## 138     10       1    Rosie         2         IN
+    ## 139     10       1    Steph         3         IN
+    ## 140     10       1      Dan         9        OUT
+    ## 141     10       1 Michelle         6 STAR BAKER
+    ## 142     10       2   Amelia         9         IN
+    ## 143     10       2    David         2         IN
+    ## 144     10       2   Helena        12         IN
+    ## 145     10       2    Henry         6         IN
+    ## 146     10       2  Michael         4         IN
+    ## 147     10       2 Michelle         8         IN
+    ## 148     10       2     Phil         3         IN
+    ## 149     10       2    Priya         7         IN
+    ## 150     10       2    Rosie         5         IN
+    ## 151     10       2    Steph        10         IN
+    ## 152     10       2    Jamie        11        OUT
+    ## 153     10       2    Alice         1 STAR BAKER
+    ## 154     10       2      Dan        NA       <NA>
+    ## 155     10       3    Alice         7         IN
+    ## 156     10       3    David         2         IN
+    ## 157     10       3   Helena         8         IN
+    ## 158     10       3    Henry         1         IN
+    ## 159     10       3 Michelle         5         IN
+    ## 160     10       3     Phil        10         IN
+    ## 161     10       3    Priya         4         IN
+    ## 162     10       3    Rosie         9         IN
+    ## 163     10       3    Steph         3         IN
+    ## 164     10       3   Amelia        11        OUT
+    ## 165     10       3  Michael         6 STAR BAKER
+    ## 166     10       3      Dan        NA       <NA>
+    ## 167     10       3    Jamie        NA       <NA>
+    ## 168     10       4    Alice         8         IN
+    ## 169     10       4    David         2         IN
+    ## 170     10       4   Helena         9         IN
+    ## 171     10       4    Henry         3         IN
+    ## 172     10       4  Michael         7         IN
+    ## 173     10       4 Michelle         5         IN
+    ## 174     10       4    Priya        10         IN
+    ## 175     10       4    Rosie         4         IN
+    ## 176     10       4     Phil         6        OUT
+    ## 177     10       4    Steph         1 STAR BAKER
+    ## 178     10       4   Amelia        NA       <NA>
+    ## 179     10       4      Dan        NA       <NA>
+    ## 180     10       4    Jamie        NA       <NA>
+    ## 181     10       5    Alice         6         IN
+    ## 182     10       5    David         9         IN
+    ## 183     10       5    Henry         3         IN
+    ## 184     10       5  Michael         8         IN
+    ## 185     10       5    Priya         2         IN
+    ## 186     10       5    Rosie         5         IN
+    ## 187     10       5   Helena         1        OUT
+    ## 188     10       5 Michelle         7        OUT
+    ## 189     10       5    Steph         4 STAR BAKER
+    ## 190     10       5   Amelia        NA       <NA>
+    ## 191     10       5      Dan        NA       <NA>
+    ## 192     10       5    Jamie        NA       <NA>
+    ## 193     10       5     Phil        NA       <NA>
+    ## 194     10       6    Alice         1         IN
+    ## 195     10       6    David         2         IN
+    ## 196     10       6    Henry         4         IN
+    ## 197     10       6  Michael         6         IN
+    ## 198     10       6    Rosie         5         IN
+    ## 199     10       6    Priya         7        OUT
+    ## 200     10       6    Steph         3 STAR BAKER
+    ## 201     10       6   Amelia        NA       <NA>
+    ## 202     10       6      Dan        NA       <NA>
+    ## 203     10       6   Helena        NA       <NA>
+    ## 204     10       6    Jamie        NA       <NA>
+    ## 205     10       6 Michelle        NA       <NA>
+    ## 206     10       6     Phil        NA       <NA>
+    ## 207     10       7    Alice         6         IN
+    ## 208     10       7    David         2         IN
+    ## 209     10       7    Rosie         1         IN
+    ## 210     10       7    Steph         4         IN
+    ## 211     10       7  Michael         5        OUT
+    ## 212     10       7    Henry         3 STAR BAKER
+    ## 213     10       7   Amelia        NA       <NA>
+    ## 214     10       7      Dan        NA       <NA>
+    ## 215     10       7   Helena        NA       <NA>
+    ## 216     10       7    Jamie        NA       <NA>
+    ## 217     10       7 Michelle        NA       <NA>
+    ## 218     10       7     Phil        NA       <NA>
+    ## 219     10       7    Priya        NA       <NA>
+    ## 220     10       8    Alice         3         IN
+    ## 221     10       8    David         1         IN
+    ## 222     10       8    Rosie         2         IN
+    ## 223     10       8    Henry         5        OUT
+    ## 224     10       8    Steph         4 STAR BAKER
+    ## 225     10       8   Amelia        NA       <NA>
+    ## 226     10       8      Dan        NA       <NA>
+    ## 227     10       8   Helena        NA       <NA>
+    ## 228     10       8    Jamie        NA       <NA>
+    ## 229     10       8  Michael        NA       <NA>
+    ## 230     10       8 Michelle        NA       <NA>
+    ## 231     10       8     Phil        NA       <NA>
+    ## 232     10       8    Priya        NA       <NA>
+    ## 233     10       9    David         2         IN
+    ## 234     10       9    Steph         3         IN
+    ## 235     10       9    Rosie         1        OUT
+    ## 236     10       9    Alice         4 STAR BAKER
+    ## 237     10       9   Amelia        NA       <NA>
+    ## 238     10       9      Dan        NA       <NA>
+    ## 239     10       9   Helena        NA       <NA>
+    ## 240     10       9    Henry        NA       <NA>
+    ## 241     10       9    Jamie        NA       <NA>
+    ## 242     10       9  Michael        NA       <NA>
+    ## 243     10       9 Michelle        NA       <NA>
+    ## 244     10       9     Phil        NA       <NA>
+    ## 245     10       9    Priya        NA       <NA>
+    ## 246     10      10    Alice         2  Runner-up
+    ## 247     10      10    Steph         3  Runner-up
+    ## 248     10      10    David         1     WINNER
+    ## 249     10      10   Amelia        NA       <NA>
+    ## 250     10      10      Dan        NA       <NA>
+    ## 251     10      10   Helena        NA       <NA>
+    ## 252     10      10    Henry        NA       <NA>
+    ## 253     10      10    Jamie        NA       <NA>
+    ## 254     10      10  Michael        NA       <NA>
+    ## 255     10      10 Michelle        NA       <NA>
+    ## 256     10      10     Phil        NA       <NA>
+    ## 257     10      10    Priya        NA       <NA>
+    ## 258     10      10    Rosie        NA       <NA>
+
+##### 3.3 join
+
+``` r
+# join bakes and bakers
+bakes_bakers = full_join(bakers_df, bakes_df,by = c("series","baker"))
+# join bake_bakers with result
+final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "episode"))
+view(final_dataset)
+```
+
+##### 3.4 rearrange and export
+
+``` r
+final_df = final_dataset |>
+  select(series, episode, baker_name, baker, result, everything()) |>
+  arrange(series,episode,baker_name)
+view(final_df)
+
+
+write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
+```
+
+##### 3.5# 3\] Problem 3 - Great British Bake Off
+
+##### 3.1 Read and clean the data
+
+``` r
+bakers_df = 
+  read.csv("./data/bakers.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() |>
+  mutate(baker = word(baker_name, 1))
+view(bakers_df)
+
+bakes_df = 
+  read.csv("./data/bakes.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() 
+view(bakes_df)
+
+results_df = 
+  read.csv("./data/results.csv", 
+             na = c("NA", "", "."),
+             skip = 2) |>
+  janitor::clean_names() 
+view(results_df)
+```
+
+##### 3.2 Check for completeness
+
+``` r
+anti_join(bakes_df, bakers_df, by = "baker")
+```
+
+    ##   series episode baker
+    ## 1      2       1  "Jo"
+    ## 2      2       2  "Jo"
+    ## 3      2       3  "Jo"
+    ## 4      2       4  "Jo"
+    ## 5      2       5  "Jo"
+    ## 6      2       6  "Jo"
+    ## 7      2       7  "Jo"
+    ## 8      2       8  "Jo"
+    ##                                                signature_bake
+    ## 1       Chocolate Orange CupcakesOrange and Cardamom Cupcakes
+    ## 2                 Caramelised Onion, Gruyere and Thyme Quiche
+    ## 3 Stromboli flavored with Mozzarella, Ham, and Picante Pepper
+    ## 4                                           Lavender Biscuits
+    ## 5                                    Salmon and Asparagus Pie
+    ## 6                             Rum and Raisin Baked Cheesecake
+    ## 7                          Raspberry & Strawberry Mousse Cake
+    ## 8                       Raspberry and Blueberry Mille Feuille
+    ##                                                                                                          show_stopper
+    ## 1                                                                                       Chocolate and Strawberry Cake
+    ## 2                   Raspberry and Mascarpone Tarts with Lemon and Almond PastryHoney and Almond Tarts with Sweetcrust
+    ## 3                                                                                                             Unknown
+    ## 4                                                               Blueberry MacaronsCoconut MacaronsStrawberry Macarons
+    ## 5                                                                                    Apple and Raspberry Meringue Pie
+    ## 6                                                                        Limoncello and White Chocolate Croquembouche
+    ## 7                                                           Pain Aux RaisinChocolate TwistsBanana and Raisin Pastries
+    ## 8 Mini Victoria SandwichesRaspberry, White Chocolate and Pistachio Mini MeringuesMini Banoffee Pie with Banana Mousse
+
+``` r
+anti_join(bakers_df, bakes_df, by = "baker")
+```
+
+    ##                 baker_name series baker_age                  baker_occupation
+    ## 1           Alice Fevronia     10        28                 Geography teacher
+    ## 2           Amelia LeBruin     10        24                  Fashion designer
+    ## 3         Antony Amourdoux      9        30                            Banker
+    ## 4          Briony Williams      9        33                  Full-time parent
+    ## 5      Dan Beasley-Harling      9        36                  Full-time parent
+    ## 6             Dan Chambers     10        32                    Support worker
+    ## 7            Helena Garcia     10        40            Online project manager
+    ## 8               Henry Bird     10        20                           Student
+    ## 9          Imelda McCarron      9        33    Countryside recreation officer
+    ## 10              Jamie Finn     10        20                  Part-time waiter
+    ## 11             Jo Wheatley      2        41                         Housewife
+    ## 12             Jon Jenkins      9        47                     Blood courier
+    ## 13            Karen Wright      9        60       In-store sampling assistant
+    ## 14         Kim-Joy Hewlett      9        27          Mental health specialist
+    ## 15           Luke Thompson      9        30 Civil servant/house and techno DJ
+    ## 16           Manon Lagrave      9        26          Software project manager
+    ## 17    Michelle Evans-Fecci     10        35          Print shop administrator
+    ## 18             Phil Thorne     10        56                        HGV driver
+    ## 19            Priya O'Shea     10        34              Marketing consultant
+    ## 20            Rahul Mandal      9        30                Research scientist
+    ## 21 Rosie Brandreth-Poynter     10        28                Veterinary surgeon
+    ## 22         Steph Blackwell     10        28                    Shop assistant
+    ## 23           Terry Hartill      9        56               Retired air steward
+    ##         hometown    baker
+    ## 1          Essex    Alice
+    ## 2        Halifax   Amelia
+    ## 3         London   Antony
+    ## 4        Bristol   Briony
+    ## 5         London      Dan
+    ## 6      Rotherham      Dan
+    ## 7          Leeds   Helena
+    ## 8         Durham    Henry
+    ## 9  County Tyrone   Imelda
+    ## 10        Surrey    Jamie
+    ## 11  Ongar, Essex       Jo
+    ## 12       Newport      Jon
+    ## 13     Wakefield    Karen
+    ## 14         Leeds  Kim-Joy
+    ## 15     Sheffield     Luke
+    ## 16        London    Manon
+    ## 17  Tenby, Wales Michelle
+    ## 18       Rainham     Phil
+    ## 19     Leicester    Priya
+    ## 20     Rotherham    Rahul
+    ## 21      Somerset    Rosie
+    ## 22       Chester    Steph
+    ## 23 West Midlands    Terry
+
+``` r
+anti_join(results_df, bakers_df, by = "baker")
+```
+
+    ##   series episode  baker technical     result
+    ## 1      2       1 Joanne        11         IN
+    ## 2      2       2 Joanne        10         IN
+    ## 3      2       3 Joanne         1         IN
+    ## 4      2       4 Joanne         8         IN
+    ## 5      2       5 Joanne         6         IN
+    ## 6      2       6 Joanne         1 STAR BAKER
+    ## 7      2       7 Joanne         3         IN
+    ## 8      2       8 Joanne         1     WINNER
+
+``` r
+anti_join(bakers_df, results_df, by = "baker")
+```
+
+    ##    baker_name series baker_age baker_occupation     hometown baker
+    ## 1 Jo Wheatley      2        41        Housewife Ongar, Essex    Jo
+
+``` r
+anti_join(bakes_df, results_df, by = c("baker","series"))
+```
+
+    ##   series episode baker
+    ## 1      2       1  "Jo"
+    ## 2      2       2  "Jo"
+    ## 3      2       3  "Jo"
+    ## 4      2       4  "Jo"
+    ## 5      2       5  "Jo"
+    ## 6      2       6  "Jo"
+    ## 7      2       7  "Jo"
+    ## 8      2       8  "Jo"
+    ##                                                signature_bake
+    ## 1       Chocolate Orange CupcakesOrange and Cardamom Cupcakes
+    ## 2                 Caramelised Onion, Gruyere and Thyme Quiche
+    ## 3 Stromboli flavored with Mozzarella, Ham, and Picante Pepper
+    ## 4                                           Lavender Biscuits
+    ## 5                                    Salmon and Asparagus Pie
+    ## 6                             Rum and Raisin Baked Cheesecake
+    ## 7                          Raspberry & Strawberry Mousse Cake
+    ## 8                       Raspberry and Blueberry Mille Feuille
+    ##                                                                                                          show_stopper
+    ## 1                                                                                       Chocolate and Strawberry Cake
+    ## 2                   Raspberry and Mascarpone Tarts with Lemon and Almond PastryHoney and Almond Tarts with Sweetcrust
+    ## 3                                                                                                             Unknown
+    ## 4                                                               Blueberry MacaronsCoconut MacaronsStrawberry Macarons
+    ## 5                                                                                    Apple and Raspberry Meringue Pie
+    ## 6                                                                        Limoncello and White Chocolate Croquembouche
+    ## 7                                                           Pain Aux RaisinChocolate TwistsBanana and Raisin Pastries
+    ## 8 Mini Victoria SandwichesRaspberry, White Chocolate and Pistachio Mini MeringuesMini Banoffee Pie with Banana Mousse
+
+``` r
+anti_join(results_df, bakes_df, by = c("baker","series"))
+```
+
+    ##     series episode    baker technical     result
+    ## 1        2       1   Joanne        11         IN
+    ## 2        2       2   Joanne        10         IN
+    ## 3        2       3   Joanne         1         IN
+    ## 4        2       4   Joanne         8         IN
+    ## 5        2       5   Joanne         6         IN
+    ## 6        2       6   Joanne         1 STAR BAKER
+    ## 7        2       7   Joanne         3         IN
+    ## 8        2       8   Joanne         1     WINNER
+    ## 9        9       1   Antony        12         IN
+    ## 10       9       1   Briony         2         IN
+    ## 11       9       1      Dan         4         IN
+    ## 12       9       1      Jon         5         IN
+    ## 13       9       1    Karen         6         IN
+    ## 14       9       1  Kim-Joy        10         IN
+    ## 15       9       1     Luke         8         IN
+    ## 16       9       1    Rahul         7         IN
+    ## 17       9       1     Ruby         1         IN
+    ## 18       9       1    Terry         9         IN
+    ## 19       9       1   Imelda        11        OUT
+    ## 20       9       1    Manon         3 STAR BAKER
+    ## 21       9       2   Antony         9         IN
+    ## 22       9       2   Briony         5         IN
+    ## 23       9       2      Dan         3         IN
+    ## 24       9       2      Jon         1         IN
+    ## 25       9       2    Karen        11         IN
+    ## 26       9       2  Kim-Joy         4         IN
+    ## 27       9       2    Manon         6         IN
+    ## 28       9       2     Ruby        10         IN
+    ## 29       9       2    Terry         8         IN
+    ## 30       9       2     Luke         7        OUT
+    ## 31       9       2    Rahul         2 STAR BAKER
+    ## 32       9       2   Imelda        NA       <NA>
+    ## 33       9       3   Briony         9         IN
+    ## 34       9       3      Dan         6         IN
+    ## 35       9       3      Jon         2         IN
+    ## 36       9       3    Karen         5         IN
+    ## 37       9       3  Kim-Joy        10         IN
+    ## 38       9       3    Manon         3         IN
+    ## 39       9       3     Ruby         7         IN
+    ## 40       9       3    Terry         1         IN
+    ## 41       9       3   Antony         8        OUT
+    ## 42       9       3    Rahul         4 STAR BAKER
+    ## 43       9       3   Imelda        NA       <NA>
+    ## 44       9       3     Luke        NA       <NA>
+    ## 45       9       4    Terry        NA        [a]
+    ## 46       9       4   Briony         5         IN
+    ## 47       9       4      Jon         3         IN
+    ## 48       9       4    Karen         7         IN
+    ## 49       9       4  Kim-Joy         6         IN
+    ## 50       9       4    Manon         8         IN
+    ## 51       9       4    Rahul         4         IN
+    ## 52       9       4     Ruby         2         IN
+    ## 53       9       4      Dan         1 STAR BAKER
+    ## 54       9       4   Antony        NA       <NA>
+    ## 55       9       4   Imelda        NA       <NA>
+    ## 56       9       4     Luke        NA       <NA>
+    ## 57       9       5   Briony         6         IN
+    ## 58       9       5      Dan         2         IN
+    ## 59       9       5      Jon         7         IN
+    ## 60       9       5    Manon         5         IN
+    ## 61       9       5    Rahul         3         IN
+    ## 62       9       5     Ruby         1         IN
+    ## 63       9       5    Karen         9        OUT
+    ## 64       9       5    Terry         8        OUT
+    ## 65       9       5  Kim-Joy         4 STAR BAKER
+    ## 66       9       5   Antony        NA       <NA>
+    ## 67       9       5   Imelda        NA       <NA>
+    ## 68       9       5     Luke        NA       <NA>
+    ## 69       9       6      Jon         2         IN
+    ## 70       9       6  Kim-Joy         5         IN
+    ## 71       9       6    Manon         4         IN
+    ## 72       9       6    Rahul         3         IN
+    ## 73       9       6     Ruby         7         IN
+    ## 74       9       6      Dan         6        OUT
+    ## 75       9       6   Briony         1 STAR BAKER
+    ## 76       9       6   Antony        NA       <NA>
+    ## 77       9       6   Imelda        NA       <NA>
+    ## 78       9       6    Karen        NA       <NA>
+    ## 79       9       6     Luke        NA       <NA>
+    ## 80       9       6    Terry        NA       <NA>
+    ## 81       9       7   Briony         5         IN
+    ## 82       9       7    Manon         2         IN
+    ## 83       9       7    Rahul         1         IN
+    ## 84       9       7     Ruby         3         IN
+    ## 85       9       7      Jon         4        OUT
+    ## 86       9       7  Kim-Joy         6 STAR BAKER
+    ## 87       9       7   Antony        NA       <NA>
+    ## 88       9       7      Dan        NA       <NA>
+    ## 89       9       7   Imelda        NA       <NA>
+    ## 90       9       7    Karen        NA       <NA>
+    ## 91       9       7     Luke        NA       <NA>
+    ## 92       9       7    Terry        NA       <NA>
+    ## 93       9       8   Briony         1         IN
+    ## 94       9       8  Kim-Joy         2         IN
+    ## 95       9       8    Rahul         5         IN
+    ## 96       9       8    Manon         4        OUT
+    ## 97       9       8     Ruby         3 STAR BAKER
+    ## 98       9       8   Antony        NA       <NA>
+    ## 99       9       8      Dan        NA       <NA>
+    ## 100      9       8   Imelda        NA       <NA>
+    ## 101      9       8      Jon        NA       <NA>
+    ## 102      9       8    Karen        NA       <NA>
+    ## 103      9       8     Luke        NA       <NA>
+    ## 104      9       8    Terry        NA       <NA>
+    ## 105      9       9  Kim-Joy         2         IN
+    ## 106      9       9    Rahul         4         IN
+    ## 107      9       9   Briony         3        OUT
+    ## 108      9       9     Ruby         1 STAR BAKER
+    ## 109      9       9   Antony        NA       <NA>
+    ## 110      9       9      Dan        NA       <NA>
+    ## 111      9       9   Imelda        NA       <NA>
+    ## 112      9       9      Jon        NA       <NA>
+    ## 113      9       9    Karen        NA       <NA>
+    ## 114      9       9     Luke        NA       <NA>
+    ## 115      9       9    Manon        NA       <NA>
+    ## 116      9       9    Terry        NA       <NA>
+    ## 117      9      10  Kim-Joy         1  Runner-up
+    ## 118      9      10     Ruby         3  Runner-up
+    ## 119      9      10    Rahul         2     WINNER
+    ## 120      9      10   Antony        NA       <NA>
+    ## 121      9      10   Briony        NA       <NA>
+    ## 122      9      10      Dan        NA       <NA>
+    ## 123      9      10   Imelda        NA       <NA>
+    ## 124      9      10      Jon        NA       <NA>
+    ## 125      9      10    Karen        NA       <NA>
+    ## 126      9      10     Luke        NA       <NA>
+    ## 127      9      10    Manon        NA       <NA>
+    ## 128      9      10    Terry        NA       <NA>
+    ## 129     10       1    Alice         5         IN
+    ## 130     10       1   Amelia         4         IN
+    ## 131     10       1    David        10         IN
+    ## 132     10       1   Helena        12         IN
+    ## 133     10       1    Henry         1         IN
+    ## 134     10       1    Jamie        13         IN
+    ## 135     10       1  Michael        11         IN
+    ## 136     10       1     Phil         8         IN
+    ## 137     10       1    Priya         7         IN
+    ## 138     10       1    Rosie         2         IN
+    ## 139     10       1    Steph         3         IN
+    ## 140     10       1      Dan         9        OUT
+    ## 141     10       1 Michelle         6 STAR BAKER
+    ## 142     10       2   Amelia         9         IN
+    ## 143     10       2    David         2         IN
+    ## 144     10       2   Helena        12         IN
+    ## 145     10       2    Henry         6         IN
+    ## 146     10       2  Michael         4         IN
+    ## 147     10       2 Michelle         8         IN
+    ## 148     10       2     Phil         3         IN
+    ## 149     10       2    Priya         7         IN
+    ## 150     10       2    Rosie         5         IN
+    ## 151     10       2    Steph        10         IN
+    ## 152     10       2    Jamie        11        OUT
+    ## 153     10       2    Alice         1 STAR BAKER
+    ## 154     10       2      Dan        NA       <NA>
+    ## 155     10       3    Alice         7         IN
+    ## 156     10       3    David         2         IN
+    ## 157     10       3   Helena         8         IN
+    ## 158     10       3    Henry         1         IN
+    ## 159     10       3 Michelle         5         IN
+    ## 160     10       3     Phil        10         IN
+    ## 161     10       3    Priya         4         IN
+    ## 162     10       3    Rosie         9         IN
+    ## 163     10       3    Steph         3         IN
+    ## 164     10       3   Amelia        11        OUT
+    ## 165     10       3  Michael         6 STAR BAKER
+    ## 166     10       3      Dan        NA       <NA>
+    ## 167     10       3    Jamie        NA       <NA>
+    ## 168     10       4    Alice         8         IN
+    ## 169     10       4    David         2         IN
+    ## 170     10       4   Helena         9         IN
+    ## 171     10       4    Henry         3         IN
+    ## 172     10       4  Michael         7         IN
+    ## 173     10       4 Michelle         5         IN
+    ## 174     10       4    Priya        10         IN
+    ## 175     10       4    Rosie         4         IN
+    ## 176     10       4     Phil         6        OUT
+    ## 177     10       4    Steph         1 STAR BAKER
+    ## 178     10       4   Amelia        NA       <NA>
+    ## 179     10       4      Dan        NA       <NA>
+    ## 180     10       4    Jamie        NA       <NA>
+    ## 181     10       5    Alice         6         IN
+    ## 182     10       5    David         9         IN
+    ## 183     10       5    Henry         3         IN
+    ## 184     10       5  Michael         8         IN
+    ## 185     10       5    Priya         2         IN
+    ## 186     10       5    Rosie         5         IN
+    ## 187     10       5   Helena         1        OUT
+    ## 188     10       5 Michelle         7        OUT
+    ## 189     10       5    Steph         4 STAR BAKER
+    ## 190     10       5   Amelia        NA       <NA>
+    ## 191     10       5      Dan        NA       <NA>
+    ## 192     10       5    Jamie        NA       <NA>
+    ## 193     10       5     Phil        NA       <NA>
+    ## 194     10       6    Alice         1         IN
+    ## 195     10       6    David         2         IN
+    ## 196     10       6    Henry         4         IN
+    ## 197     10       6  Michael         6         IN
+    ## 198     10       6    Rosie         5         IN
+    ## 199     10       6    Priya         7        OUT
+    ## 200     10       6    Steph         3 STAR BAKER
+    ## 201     10       6   Amelia        NA       <NA>
+    ## 202     10       6      Dan        NA       <NA>
+    ## 203     10       6   Helena        NA       <NA>
+    ## 204     10       6    Jamie        NA       <NA>
+    ## 205     10       6 Michelle        NA       <NA>
+    ## 206     10       6     Phil        NA       <NA>
+    ## 207     10       7    Alice         6         IN
+    ## 208     10       7    David         2         IN
+    ## 209     10       7    Rosie         1         IN
+    ## 210     10       7    Steph         4         IN
+    ## 211     10       7  Michael         5        OUT
+    ## 212     10       7    Henry         3 STAR BAKER
+    ## 213     10       7   Amelia        NA       <NA>
+    ## 214     10       7      Dan        NA       <NA>
+    ## 215     10       7   Helena        NA       <NA>
+    ## 216     10       7    Jamie        NA       <NA>
+    ## 217     10       7 Michelle        NA       <NA>
+    ## 218     10       7     Phil        NA       <NA>
+    ## 219     10       7    Priya        NA       <NA>
+    ## 220     10       8    Alice         3         IN
+    ## 221     10       8    David         1         IN
+    ## 222     10       8    Rosie         2         IN
+    ## 223     10       8    Henry         5        OUT
+    ## 224     10       8    Steph         4 STAR BAKER
+    ## 225     10       8   Amelia        NA       <NA>
+    ## 226     10       8      Dan        NA       <NA>
+    ## 227     10       8   Helena        NA       <NA>
+    ## 228     10       8    Jamie        NA       <NA>
+    ## 229     10       8  Michael        NA       <NA>
+    ## 230     10       8 Michelle        NA       <NA>
+    ## 231     10       8     Phil        NA       <NA>
+    ## 232     10       8    Priya        NA       <NA>
+    ## 233     10       9    David         2         IN
+    ## 234     10       9    Steph         3         IN
+    ## 235     10       9    Rosie         1        OUT
+    ## 236     10       9    Alice         4 STAR BAKER
+    ## 237     10       9   Amelia        NA       <NA>
+    ## 238     10       9      Dan        NA       <NA>
+    ## 239     10       9   Helena        NA       <NA>
+    ## 240     10       9    Henry        NA       <NA>
+    ## 241     10       9    Jamie        NA       <NA>
+    ## 242     10       9  Michael        NA       <NA>
+    ## 243     10       9 Michelle        NA       <NA>
+    ## 244     10       9     Phil        NA       <NA>
+    ## 245     10       9    Priya        NA       <NA>
+    ## 246     10      10    Alice         2  Runner-up
+    ## 247     10      10    Steph         3  Runner-up
+    ## 248     10      10    David         1     WINNER
+    ## 249     10      10   Amelia        NA       <NA>
+    ## 250     10      10      Dan        NA       <NA>
+    ## 251     10      10   Helena        NA       <NA>
+    ## 252     10      10    Henry        NA       <NA>
+    ## 253     10      10    Jamie        NA       <NA>
+    ## 254     10      10  Michael        NA       <NA>
+    ## 255     10      10 Michelle        NA       <NA>
+    ## 256     10      10     Phil        NA       <NA>
+    ## 257     10      10    Priya        NA       <NA>
+    ## 258     10      10    Rosie        NA       <NA>
+
+##### 3.3 join
+
+``` r
+# join bakes and bakers
+bakes_bakers = full_join(bakers_df, bakes_df,by = c("series","baker"))
+# join bake_bakers with result
+final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "episode"))
+view(final_dataset)
+```
+
+##### 3.4 rearrange and export
+
+``` r
+final_df = final_dataset |>
+  select(series, episode, baker_name, baker, result, everything()) |>
+  arrange(series,episode,baker_name)
+view(final_df)
+
+write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
+```
+
+##### 3.5 Describe your data cleaning process
+
+###### including any questions you have or choices you made. Briefly discuss the final dataset.
+
+###### 1. Data Import and Initial Cleanup
+
+- Imported data from `bakers.csv`, `bakes.csv`, and `results.csv`.
+- Handled missing values using the `na` parameter.
+- Standardized column names with `janitor::clean_names()`.
+- Extracted the first word of `baker_name` as a new `baker` column for
+  the `bakers` dataset.
+
+###### 2. Checking for Data Completeness
+
+- Used `anti_join` to identify bakers without corresponding entries in
+  the bakes and results datasets.
+- Ensured all bakers, bakes, and results were properly aligned.
+
+###### 3. Data Integration
+
+- Merged `bakers` and `bakes` datasets using a `full_join` based on
+  `baker` and `series`.
+- Further merged the combined dataset with `results` on `baker`,
+  `series`, and `episode`.
+
+###### 4. Final Arrangement and Export
+
+- Rearranged columns in the final dataset for logical ordering.
+- Exported the cleaned and merged dataset to `final_bake_data.csv` for
+  further analysis.
+
+The final dataset consists of 1170 rows and 11 columns, representing
+episodes from various seasons of the Great British Bake Off. Each row
+contains details about a contestant’s participation in a specific
+episode, including personal information (age, occupation, hometown) and
+their performance in the challenges (Signature Bake, Show Stopper, and
+Technical). This dataset can be used to analyze contestant performance
+trends, identify winning patterns, and examine how technical ranks
+relate to overall outcomes.
+
+##### 3.6 the star baker or winner
+
+showing the star baker or winner of each episode in Seasons 5 through
+10. Comment on this table – were there any predictable overall winners?
+Any surprises?
+
+``` r
+star_df = final_df |>
+  filter(series >= 5 & series <= 10, result %in% c("WINNER", "STAR BAKER")) |>
+  select(series, episode, baker, result, baker_age, baker_occupation, hometown, signature_bake,show_stopper, technical) |>
+  arrange(series, episode)
+view(star_df)
+```
+
+``` r
+library(knitr)
+kable(star_df, 
+      caption = "Star Baker or Winner in Seasons 5 through 10")
+```
+
+|                                                series | episode | baker     | result     | baker_age | baker_occupation                           | hometown                         | signature_bake                                                                    | show_stopper                                                      | technical |
+|------------------------------------------------------:|--------:|:----------|:-----------|----------:|:-------------------------------------------|:---------------------------------|:----------------------------------------------------------------------------------|:------------------------------------------------------------------|----------:|
+|                                                     5 |       1 | Nancy     | STAR BAKER |        60 | Retired Practice Manager                   | Barton-upon-Humber, Lincolnshire | Coffee and Hazelnut Swiss Roll                                                    | Jaffa Orange Cakes                                                |         1 |
+|                                                     5 |       2 | Richard   | STAR BAKER |        38 | Builder                                    | Mill Hill, London                | Rosemary Seeded Crackers                                                          | Pirates!                                                          |         1 |
+|                                                     5 |       3 | Luis      | STAR BAKER |        42 | Graphic Designer                           | Poynton, Cheshire                | Opposites Attract Rolls                                                           | Roscón de Reyes                                                   |         2 |
+|                                                     5 |       4 | Richard   | STAR BAKER |        38 | Builder                                    | Mill Hill, London                | Black Forest Chocolate Fondants                                                   | Tiramisu Baked Alaska                                             |         5 |
+|                                                     5 |       5 | Kate      | STAR BAKER |        41 | Furniture Restorer                         | Brighton, East Sussex            | Rhubarb and Custard Tart                                                          | Rhubarb, Prune and Apple Pies                                     |         3 |
+|                                                     5 |       6 | Chetna    | STAR BAKER |        35 | Fashion Designer                           | Broadstairs, Kent                | Orange Savarin with Cinnamon Cream                                                | Almond Liqueur Dobos Torte with Chocolate Caramel Buttercream     |         2 |
+|                                                     5 |       7 | Richard   | STAR BAKER |        38 | Builder                                    | Mill Hill, London                | Minted Lamb Pasties                                                               | Stair of Éclairs                                                  |           |
+| (Lavender and Blueberry & Rose and Raspberry Éclairs) |       1 |           |            |           |                                            |                                  |                                                                                   |                                                                   |           |
+|                                                     5 |       8 | Richard   | STAR BAKER |        38 | Builder                                    | Mill Hill, London                | Fruit Swedish Tea Ring                                                            | Rhubarb and Custard and Toffee Apple Doughnuts                    |         4 |
+|                                                     5 |       9 | Richard   | STAR BAKER |        38 | Builder                                    | Mill Hill, London                | Rose and Pistachio BaklavaWalnut and Almond Baklava                               | Hazelnut Mocha EntremetsPink Grapefruit Entremets                 |         2 |
+|                                                     5 |      10 | Nancy     | WINNER     |        60 | Retired Practice Manager                   | Barton-upon-Humber, Lincolnshire | Apple and Lemon KitesRaspberry and Almond Croissants                              | Red Windmill                                                      |         1 |
+|                                                     6 |       1 | Marie     | STAR BAKER |        66 | Retired                                    | Auchterarder, Perthshire         | Zingy Citrus Madeira Cake                                                         | A Walk in the Black Forest                                        |         3 |
+|                                                     6 |       2 | Ian       | STAR BAKER |        41 | Travel photographer                        | Great Wilbraham, Cambridgeshire  | Orange, Rosemary and Almond Biscotti                                              | Sandwich de la Confiture                                          |         3 |
+|                                                     6 |       3 | Ian       | STAR BAKER |        41 | Travel photographer                        | Great Wilbraham, Cambridgeshire  | Wild Garlic Pesto Soda Breads                                                     | Flour Power                                                       |         1 |
+|                                                     6 |       4 | Ian       | STAR BAKER |        41 | Travel photographer                        | Great Wilbraham, Cambridgeshire  | Pomegranate Two Ways Crème Brûlées                                                | Trio of Spicy and Herby Baked Cheesecakes                         |         4 |
+|                                                     6 |       5 | Nadiya    | STAR BAKER |        30 | Full-time mother                           | Leeds / Luton                    | Naked Blueberry and Caraway Crunch Cake                                           | Chocolate and Strawberry Lime Ice Cream Roll                      |         1 |
+|                                                     6 |       6 | Mat       | STAR BAKER |        37 | Fire fighter                               | London                           | Piña Colada Frangipane Tart                                                       | His ‘n’ Hers Vol-au-vents                                         |         1 |
+|                                                     6 |       7 | Tamal     | STAR BAKER |        29 | Trainee anaesthetist                       | Manchester                       | Middle Eastern Game Pie                                                           | Spiced Blackberry, Raspberry and Cardamom Charlotte Russe         |         3 |
+|                                                     6 |       8 | Nadiya    | STAR BAKER |        30 | Full-time mother                           | Leeds / Luton                    | Rose Pistachio and Mocha Hazelnut Horns                                           | Bubble Gum and Peppermint Cream Religieuse à l’ancienne           |         1 |
+|                                                     6 |       9 | Nadiya    | STAR BAKER |        30 | Full-time mother                           | Leeds / Luton                    | Peanut Salted Caramel and Chocolate Tart                                          | Peacock in Nan’s Door                                             |         4 |
+|                                                     6 |      10 | Nadiya    | WINNER     |        30 | Full-time mother                           | Leeds / Luton                    | Cardamom and Almond Buns & Nutmeg and Sour Cherry Fingers                         | My Big Fat British Wedding Cake                                   |         1 |
+|                                                     7 |       1 | Jane      | STAR BAKER |        61 | Garden designer                            | Beckenham                        | Lemon and Poppy Seed Drizzle Cake                                                 | Chocolate Orange Mirror Cake                                      |         7 |
+|                                                     7 |       2 | Candice   | STAR BAKER |        31 | PE teacher                                 | Barton-Le-Clay, Bedfordshire     | Salted Caramel, Chocolate Iced Shiny Hearts                                       | Gingerbread Pub with Sticky Ginger Carpet                         |         8 |
+|                                                     7 |       3 | Tom       | STAR BAKER |        26 | Project engagement manager                 | Rochdale                         | Chocolate Orange and Chilli Swirl Bread                                           | Jörmungandr and Mjölnir                                           |         4 |
+|                                                     7 |       4 | Benjamina | STAR BAKER |        23 | Teaching assistant                         | South London                     | Red Onion Chutney, Brie and Bacon Yorkshire Puddings                              | Tropical Churros                                                  |         1 |
+|                                                     7 |       5 | Candice   | STAR BAKER |        31 | PE teacher                                 | Barton-Le-Clay, Bedfordshire     | Danish Pastry Croque Monsieur Kites and Cinnamon Apple, Vanilla Crème Rose Danish | Sausage, Black Pudding and Apple Rounds and Banoffee Whiskey Cups |         2 |
+|                                                     7 |       6 | Tom       | STAR BAKER |        26 | Project engagement manager                 | Rochdale                         | Blood Orange Halloween Pumpkin Pie                                                | Floral Tea Cake                                                   |         1 |
+|                                                     7 |       7 | Andrew    | STAR BAKER |        25 | Aerospace engineer                         | Derby / Holywood, County Down    | Tropical Holiday Roulade                                                          | Childhood Ice Cream Mousse Cakes                                  |         1 |
+|                                                     7 |       8 | Candice   | STAR BAKER |        31 | PE teacher                                 | Barton-Le-Clay, Bedfordshire     | Cheesy Cheeky Fish Pies                                                           | Peacock                                                           |         1 |
+|                                                     7 |       9 | Andrew    | STAR BAKER |        25 | Aerospace engineer                         | Derby / Holywood, County Down    | Cheesy Elephant Ears and Herby Treble Clefs                                       | Philharmonic Fondants                                             |         2 |
+|                                                     7 |      10 | Candice   | WINNER     |        31 | PE teacher                                 | Barton-Le-Clay, Bedfordshire     | Queen Victoria’s Mango and Strawberry Crown                                       | Picnic for Pearly Kings and Queens                                |         2 |
+|                                                     8 |       1 | Steven    | STAR BAKER |        34 | Marketer                                   | Watford, Hertfordshire           | Bonfire Night Cake                                                                | ‘A Baker’s Lunch’ Cake                                            |         6 |
+|                                                     8 |       2 | Steven    | STAR BAKER |        34 | Marketer                                   | Watford, Hertfordshire           | Amarpressi Biscuits                                                               | ‘Check Bake’ Game                                                 |         6 |
+|                                                     8 |       3 | Julia     | STAR BAKER |        21 | Aviation Broker                            | Crawley, West Sussex             | Earl Grey Dried Fruit Teacakes                                                    | ‘The Snail Under a Mushroom’ Bread Sculpture                      |         2 |
+|                                                     8 |       4 | Kate      | STAR BAKER |        29 | Health and safety inspector                | Merseyside                       | Salted Bay Caramel Millionaire Shortbreads                                        | Sticky Toffee Apple Caramel Cake                                  |         6 |
+|                                                     8 |       5 | Sophie    | STAR BAKER |        33 | Former army officer and trainee stuntwoman | West Molesey, Surrey             | Ginger, Fig and Honey Steamed School Pudding                                      | Raspberry, Yuzu & White Chocolate Bûche Trifle Terrine            |         1 |
+|                                                     8 |       6 | Liam      | STAR BAKER |        19 | Student                                    | North London                     | ‘Standard FC’ Decorative Pies                                                     | ‘Nan’s Sunday Dinner’ Pie                                         |         4 |
+|                                                     8 |       7 | Steven    | STAR BAKER |        34 | Marketer                                   | Watford, Hertfordshire           | Italian Style Cannoli                                                             | ‘Sicilian-style’ Sfogliatelle                                     |         1 |
+|                                                     8 |       8 | Stacey    | STAR BAKER |        42 | Former school teacher                      | Radlett, Hertfordshire           | Camembert & Onion and Apple & Blueberry Bedfordshire Clangers                     | ‘Bright’ Lemon & Orange Savoy Cake                                |         3 |
+|                                                     8 |       9 | Sophie    | STAR BAKER |        33 | Former army officer and trainee stuntwoman | West Molesey, Surrey             | Strawberry & Rhubarb and Chestnut & Vanilla Choux Buns                            | ‘Tutu with Opera Filling’ Meringue Centrepiece                    |         1 |
+|                                                     8 |      10 | Sophie    | WINNER     |        33 | Former army officer and trainee stuntwoman | West Molesey, Surrey             | Spelt Boules, Mushroom Ciabatta and Orange Plaited Brioche                        | ‘Ode to the Honey Bee’ Entremet                                   |         2 |
+|                                                     9 |       1 | Manon     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         3 |
+|                                                     9 |       2 | Rahul     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         2 |
+|                                                     9 |       3 | Rahul     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         4 |
+|                                                     9 |       4 | Dan       | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+|                                                     9 |       5 | Kim-Joy   | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         4 |
+|                                                     9 |       6 | Briony    | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+|                                                     9 |       7 | Kim-Joy   | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         6 |
+|                                                     9 |       8 | Ruby      | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         3 |
+|                                                     9 |       9 | Ruby      | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+|                                                     9 |      10 | Rahul     | WINNER     |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         2 |
+|                                                    10 |       1 | Michelle  | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         6 |
+|                                                    10 |       2 | Alice     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+|                                                    10 |       3 | Michael   | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         6 |
+|                                                    10 |       4 | Steph     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+|                                                    10 |       5 | Steph     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         4 |
+|                                                    10 |       6 | Steph     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         3 |
+|                                                    10 |       7 | Henry     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         3 |
+|                                                    10 |       8 | Steph     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         4 |
+|                                                    10 |       9 | Alice     | STAR BAKER |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         4 |
+|                                                    10 |      10 | David     | WINNER     |        NA | NA                                         | NA                               | NA                                                                                | NA                                                                |         1 |
+
+Star Baker or Winner in Seasons 5 through 10
+
+``` r
+summary(star_df)
+```
+
+    ##      series        episode        baker              result         
+    ##  Min.   : 5.0   Min.   : 1.0   Length:60          Length:60         
+    ##  1st Qu.: 6.0   1st Qu.: 3.0   Class :character   Class :character  
+    ##  Median : 7.5   Median : 5.5   Mode  :character   Mode  :character  
+    ##  Mean   : 7.5   Mean   : 5.5                                        
+    ##  3rd Qu.: 9.0   3rd Qu.: 8.0                                        
+    ##  Max.   :10.0   Max.   :10.0                                        
+    ##                                                                     
+    ##    baker_age     baker_occupation     hometown         signature_bake    
+    ##  Min.   :19.00   Length:60          Length:60          Length:60         
+    ##  1st Qu.:30.00   Class :character   Class :character   Class :character  
+    ##  Median :33.50   Mode  :character   Mode  :character   Mode  :character  
+    ##  Mean   :35.62                                                           
+    ##  3rd Qu.:38.75                                                           
+    ##  Max.   :66.00                                                           
+    ##  NA's   :20                                                              
+    ##  show_stopper         technical   
+    ##  Length:60          Min.   :1.00  
+    ##  Class :character   1st Qu.:1.00  
+    ##  Mode  :character   Median :2.00  
+    ##                     Mean   :2.75  
+    ##                     3rd Qu.:4.00  
+    ##                     Max.   :8.00  
+    ## 
+
+``` r
+table(star_df$baker_occupation)
+```
+
+    ## 
+    ##                         Aerospace engineer 
+    ##                                          2 
+    ##                            Aviation Broker 
+    ##                                          1 
+    ##                                    Builder 
+    ##                                          5 
+    ##                           Fashion Designer 
+    ##                                          1 
+    ##                               Fire fighter 
+    ##                                          1 
+    ## Former army officer and trainee stuntwoman 
+    ##                                          3 
+    ##                      Former school teacher 
+    ##                                          1 
+    ##                           Full-time mother 
+    ##                                          4 
+    ##                         Furniture Restorer 
+    ##                                          1 
+    ##                            Garden designer 
+    ##                                          1 
+    ##                           Graphic Designer 
+    ##                                          1 
+    ##                Health and safety inspector 
+    ##                                          1 
+    ##                                   Marketer 
+    ##                                          3 
+    ##                                 PE teacher 
+    ##                                          4 
+    ##                 Project engagement manager 
+    ##                                          2 
+    ##                                    Retired 
+    ##                                          1 
+    ##                   Retired Practice Manager 
+    ##                                          2 
+    ##                                    Student 
+    ##                                          1 
+    ##                         Teaching assistant 
+    ##                                          1 
+    ##                       Trainee anaesthetist 
+    ##                                          1 
+    ##                        Travel photographer 
+    ##                                          3
+
+``` r
+table(star_df$hometown)
+```
+
+    ## 
+    ##         Auchterarder, Perthshire     Barton-Le-Clay, Bedfordshire 
+    ##                                1                                4 
+    ## Barton-upon-Humber, Lincolnshire                        Beckenham 
+    ##                                2                                1 
+    ##            Brighton, East Sussex                Broadstairs, Kent 
+    ##                                1                                1 
+    ##             Crawley, West Sussex    Derby / Holywood, County Down 
+    ##                                1                                2 
+    ##  Great Wilbraham, Cambridgeshire                    Leeds / Luton 
+    ##                                3                                4 
+    ##                           London                       Manchester 
+    ##                                1                                1 
+    ##                       Merseyside                Mill Hill, London 
+    ##                                1                                5 
+    ##                     North London                Poynton, Cheshire 
+    ##                                1                                1 
+    ##           Radlett, Hertfordshire                         Rochdale 
+    ##                                1                                2 
+    ##                     South London           Watford, Hertfordshire 
+    ##                                1                                3 
+    ##             West Molesey, Surrey 
+    ##                                3
+
+``` r
+for (series_num in 5:10) {
+ 
+  star_df_series <- star_df[star_df$series == series_num, ]
+  
+
+  table_baker_result <- table(star_df_series$baker, star_df_series$result)
+  
+ 
+  cat("Crosstab for Series", series_num, ":\n")
+  print(table_baker_result)
+  cat("\n") 
+}
+```
+
+    ## Crosstab for Series 5 :
+    ##          
+    ##           STAR BAKER WINNER
+    ##   Chetna           1      0
+    ##   Kate             1      0
+    ##   Luis             1      0
+    ##   Nancy            1      1
+    ##   Richard          5      0
+    ## 
+    ## Crosstab for Series 6 :
+    ##         
+    ##          STAR BAKER WINNER
+    ##   Ian             3      0
+    ##   Marie           1      0
+    ##   Mat             1      0
+    ##   Nadiya          3      1
+    ##   Tamal           1      0
+    ## 
+    ## Crosstab for Series 7 :
+    ##            
+    ##             STAR BAKER WINNER
+    ##   Andrew             2      0
+    ##   Benjamina          1      0
+    ##   Candice            3      1
+    ##   Jane               1      0
+    ##   Tom                2      0
+    ## 
+    ## Crosstab for Series 8 :
+    ##         
+    ##          STAR BAKER WINNER
+    ##   Julia           1      0
+    ##   Kate            1      0
+    ##   Liam            1      0
+    ##   Sophie          2      1
+    ##   Stacey          1      0
+    ##   Steven          3      0
+    ## 
+    ## Crosstab for Series 9 :
+    ##          
+    ##           STAR BAKER WINNER
+    ##   Briony           1      0
+    ##   Dan              1      0
+    ##   Kim-Joy          2      0
+    ##   Manon            1      0
+    ##   Rahul            2      1
+    ##   Ruby             2      0
+    ## 
+    ## Crosstab for Series 10 :
+    ##           
+    ##            STAR BAKER WINNER
+    ##   Alice             2      0
+    ##   David             0      1
+    ##   Henry             1      0
+    ##   Michael           1      0
+    ##   Michelle          1      0
+    ##   Steph             4      0
+
+We can see from the tables above, there were surprises. All winners in
+5-10 series are not one who won most star bakers.
+
+##### 3.7 viewers data
+
+``` r
+viewers_df = 
+  read.csv("./data/viewers.csv", 
+             na = c("NA", "", ".")) |>
+  janitor::clean_names() 
+
+view(viewers_df)
+```
+
+\### Veiwer data overview
+
+``` r
+summary(viewers_df, 10)
+```
+
+    ##     episode         series_1        series_2        series_3    
+    ##  Min.   : 1.00   Min.   :2.240   Min.   :3.100   Min.   :3.850  
+    ##  1st Qu.: 3.25   1st Qu.:2.638   1st Qu.:3.583   1st Qu.:4.603  
+    ##  Median : 5.50   Median :2.875   Median :3.825   Median :4.765  
+    ##  Mean   : 5.50   Mean   :2.770   Mean   :3.951   Mean   :5.001  
+    ##  3rd Qu.: 7.75   3rd Qu.:3.000   3rd Qu.:4.293   3rd Qu.:5.287  
+    ##  Max.   :10.00   Max.   :3.030   Max.   :5.060   Max.   :6.740  
+    ##                  NA's   :4       NA's   :2                      
+    ##     series_4        series_5         series_6        series_7    
+    ##  Min.   :6.600   Min.   : 8.510   Min.   :11.09   Min.   :13.01  
+    ##  1st Qu.:6.853   1st Qu.: 9.087   1st Qu.:11.71   1st Qu.:13.16  
+    ##  Median :7.245   Median :10.040   Median :12.18   Median :13.37  
+    ##  Mean   :7.354   Mean   :10.039   Mean   :12.31   Mean   :13.56  
+    ##  3rd Qu.:7.410   3rd Qu.:10.273   3rd Qu.:12.38   3rd Qu.:13.45  
+    ##  Max.   :9.450   Max.   :13.510   Max.   :15.05   Max.   :15.90  
+    ##                                                                  
+    ##     series_8         series_9        series_10     
+    ##  Min.   : 8.550   Min.   : 8.670   Min.   : 8.700  
+    ##  1st Qu.: 8.627   1st Qu.: 8.910   1st Qu.: 8.965  
+    ##  Median : 8.980   Median : 9.265   Median : 9.225  
+    ##  Mean   : 9.017   Mean   : 9.298   Mean   : 9.242  
+    ##  3rd Qu.: 9.180   3rd Qu.: 9.537   3rd Qu.: 9.370  
+    ##  Max.   :10.040   Max.   :10.340   Max.   :10.050  
+    ## 
+
+``` r
+dim(viewers_df)
+```
+
+    ## [1] 10 11
+
+``` r
+head(viewers_df,10)
+```
+
+    ##    episode series_1 series_2 series_3 series_4 series_5 series_6 series_7
+    ## 1        1     2.24     3.10     3.85     6.60    8.510    11.62    13.58
+    ## 2        2     3.00     3.53     4.60     6.65    8.790    11.59    13.45
+    ## 3        3     3.00     3.82     4.53     7.17    9.280    12.01    13.01
+    ## 4        4     2.60     3.60     4.71     6.82   10.250    12.36    13.29
+    ## 5        5     3.03     3.83     4.61     6.95    9.950    12.39    13.12
+    ## 6        6     2.75     4.25     4.82     7.32   10.130    12.00    13.13
+    ## 7        7       NA     4.42     5.10     7.76   10.280    12.35    13.45
+    ## 8        8       NA     5.06     5.35     7.41    9.023    11.09    13.26
+    ## 9        9       NA       NA     5.70     7.41   10.670    12.65    13.44
+    ## 10      10       NA       NA     6.74     9.45   13.510    15.05    15.90
+    ##    series_8 series_9 series_10
+    ## 1      9.46     9.55      9.62
+    ## 2      9.23     9.31      9.38
+    ## 3      8.68     8.91      8.94
+    ## 4      8.55     8.88      8.96
+    ## 5      8.61     8.67      9.26
+    ## 6      8.61     8.91      8.70
+    ## 7      9.01     9.22      8.98
+    ## 8      8.95     9.69      9.19
+    ## 9      9.03     9.50      9.34
+    ## 10    10.04    10.34     10.05
+
+``` r
+# calculate average viewer
+mean(viewers_df$series_1,na.rm=TRUE)
+```
+
+    ## [1] 2.77
+
+``` r
+mean(viewers_df$series_5,na.rm=TRUE)
+```
+
+    ## [1] 10.0393
+
+The average viewer for Series 1 episodes is 2.77 million, while the
+average viewer for Series 5 episodes is 10.0393 million.
