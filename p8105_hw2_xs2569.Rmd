@@ -329,7 +329,7 @@ for (series_num in 5:10) {
 ```
 
 We can see from the tables above, there were surprises of the winners.
-All winners in 5-10 series are not one who won most star bakers.
+All winners in 5-10 series are not one who won most star bakers, which is surprising.
 
 ##### 3.7 viewers data
 ```{r}
