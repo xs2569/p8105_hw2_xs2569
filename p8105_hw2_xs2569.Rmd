@@ -3,9 +3,7 @@ title: "p8105_hw2_xs2569"
 author: "Xun Sun"
 date: "2024-09-26"
 output:
-  github_document: null
-  html_document:
-    df_print: paged
+  github_document
 ---
 
 # 1] problem 1  -  NYC Transit data
@@ -28,7 +26,7 @@ subway_df =
   select(line, station_name, station_latitude, station_longitude, route_count, entry_logic, vending, entrance_type, ada)
 
 view(subway_df)
-summary(subway_df)
+# summary(subway_df)
 ```
 
 ##### This data frame :subway_df) now contains 9 variables as follows:
@@ -95,7 +93,7 @@ MrTrash_df =
   select(-x15, -x16)  # without this line the data will contain x15,x16 with all na
 
 view(MrTrash_df)
-summary(MrTrash_df)
+# summary(MrTrash_df)
 ```
 
 ##### 2.2 Read and clean Professor Trash Wheel and Gwynnda Sheet
@@ -131,7 +129,7 @@ view(GwynTrash_df)
 ```{r}
 Combined_df <- bind_rows(MrTrash_df, ProfTrash_df, GwynTrash_df)
 view(Combined_df)
-summary(Combined_df)
+# summary(Combined_df)
 ```
 
 ##### 2.4 Summary 
@@ -185,15 +183,13 @@ print(results)
 
 ```
 
-The total weight of trash collected by Professor Trash Wheel can be calculated as follows:
-```{r}
-sum(ProfTrash_df$weight_tons)
-```
+The total weight of trash collected by Professor Trash Wheel can be calculated as follows: `r sum(ProfTrash_df$weight_tons, na.rm = TRUE)` tons.
 
-The total number of cigarette_butts collected by Gwynnda in June 2022 can be calculated by first filtering the data for the specified conditions and then summing up the cigarette_butts:
-```{r}
-sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$year == "2022"])
-```
+The total number of cigarette butts collected by Gwynnda in June 2022 can be calculated by first filtering the data for the specified conditions and then summing up the `cigarette_butts`: `r sum(GwynTrash_df$cigarette_butts[GwynTrash_df$month == "June" & GwynTrash_df$year == 2022])`.
+
+
+
+
 # 3] Problem 3  -  Great British Bake Off
 
 ##### 3.1 Read and clean the data
@@ -254,6 +250,8 @@ view(final_dataset)
 ##### 3.4 rearrange and export
 ```{r}
 final_df = final_dataset |>
+  mutate(series = as.numeric(series),
+         episode = as.numeric(episode)) |>
   select(series, episode, baker_name, baker, result, everything()) |>
   arrange(series,episode,baker_name)
 view(final_df)
@@ -262,73 +260,6 @@ view(final_df)
 write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
 ```
 
-##### 3.5# 3] Problem 3  -  Great British Bake Off
-
-##### 3.1 Read and clean the data
-
-```{r}
-bakers_df = 
-  read.csv("./data/bakers.csv", 
-             na = c("NA", "", ".")) |>
-  janitor::clean_names() |>
-  mutate(baker = word(baker_name, 1))
-view(bakers_df)
-
-bakes_df = 
-  read.csv("./data/bakes.csv", 
-             na = c("NA", "", ".")) |>
-  janitor::clean_names() 
-view(bakes_df)
-
-results_df = 
-  read.csv("./data/results.csv", 
-             na = c("NA", "", "."),
-             skip = 2) |>
-  janitor::clean_names() 
-view(results_df)
-```
-
-##### 3.2  Check for completeness 
-```{r,warning=FALSE}
-
-anti_join(bakes_df, bakers_df, by = "baker")
-
-
-anti_join(bakers_df, bakes_df, by = "baker")
-
-
-anti_join(results_df, bakers_df, by = "baker")
-
-
-anti_join(bakers_df, results_df, by = "baker")
-
-
-anti_join(bakes_df, results_df, by = c("baker","series"))
-
-
-anti_join(results_df, bakes_df, by = c("baker","series"))
-```
-
-##### 3.3  join 
-```{r}
-
-# join bakes and bakers
-bakes_bakers = full_join(bakers_df, bakes_df,by = c("series","baker"))
-# join bake_bakers with result
-final_dataset = full_join(bakes_bakers, results_df, by = c("baker", "series", "episode"))
-view(final_dataset)
-
-```
-
-##### 3.4 rearrange and export
-```{r}
-final_df = final_dataset |>
-  select(series, episode, baker_name, baker, result, everything()) |>
-  arrange(series,episode,baker_name)
-view(final_df)
-
-write.csv(final_df, "final_bake_data.csv", row.names = FALSE)
-```
 
 ##### 3.5 Describe your data cleaning process
 ###### including any questions you have or choices you made. Briefly discuss the final dataset.
@@ -358,7 +289,8 @@ The final dataset consists of `r nrow(final_df)` rows and `r ncol(final_df)` col
  
 ```{r}
 star_df = final_df |>
-  filter(series >= 5 & series <= 10, result %in% c("WINNER", "STAR BAKER")) |>
+  filter(series >= 5 & series <= 10, result %in% c("WINNER", "STAR BAKER"),
+         !is.na(result)) |>
   select(series, episode, baker, result, baker_age, baker_occupation, hometown, signature_bake,show_stopper, technical) |>
   arrange(series, episode)
 view(star_df)
@@ -367,8 +299,7 @@ view(star_df)
 
 ```{r}
 library(knitr)
-kable(star_df, 
-      caption = "Star Baker or Winner in Seasons 5 through 10")
+kable(star_df)
 ```
 
 ```{r}
@@ -376,10 +307,10 @@ summary(star_df)
 ```
 
 ```{r}
-table(star_df$baker_occupation)
+# table(star_df$baker_occupation)
 ```
 ```{r}
-table(star_df$hometown)
+# table(star_df$hometown)
 
 ```
 ```{r}
@@ -397,7 +328,7 @@ for (series_num in 5:10) {
 }
 ```
 
-We can see from the tables above, there were surprises.
+We can see from the tables above, there were surprises of the winners.
 All winners in 5-10 series are not one who won most star bakers.
 
 ##### 3.7 viewers data
